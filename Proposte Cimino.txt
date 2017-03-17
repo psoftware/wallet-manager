@@ -1,0 +1,14 @@
+Nel file xml
+aggiungere nel file xml categorie e rimuovere la descrizione
+
+aggiungere oggetti di tipo calendario a posto della text box
+
+aggiungere caricamento delle voci di spesa da xml parallelamente all'aggiunta manuale
+
+doppio grafico (linea) spese/accrediti
+
+eliminazione della stima costi 
+
+tabella mostra le ultime n spese configurabili
+
+filtro ricerca data DA -> A

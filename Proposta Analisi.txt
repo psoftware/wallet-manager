@@ -1,0 +1,44 @@
+#### Gestione monetaria ####
+
+# Inserimento voce
+- L'utente inserisce la data relativa alla spesa o all'accredito;
+- L'utente inserisce il titolo/descrizione dell'entrata;
+- L'utente inserisce l'importo dell'entrata;
+- L'utente seleziona se la voce è del tipo Accredito o Addebito;
+- IF L'utente preme Inserisci
+	- Il sistema archivia l'entrata.
+	- Il sistema aggiorna la sezione Stato e stime spese (Spendibili e Stima spese)
+
+# Storico
+- L'utente inserisce nel filtro la data relativa alla spesa o all'accredito;
+- L'utente inserisce nel filtro parte del titolo/descrizione dell'entrata;
+- IF L'utente preme Cerca
+	FOR EACH entrata inserita
+		- Il sistema visualizza la data di inserimento
+		- Il sistema visualizza il titolo/descrizione
+		- Il sistema visualizza l'importo (negativo o positivo)
+# Grafico
+IF L'utente seleziona Settimanale, Mensile o Annuale dalla combo "Vista"
+	- Il sistema genera un grafico delle spese, rispettivamente, Settimanale, Mensile o Annuale.
+
+#### File di Configurazione ####
+All'avvio il sistema legge dal file di configurazione i seguenti dati:
+- Il tipo di moneta
+- Il limite inferiore per "Spendibili" sotto la quale l'entrata è colorata di rosso
+- Il tipo di vista di default relativo al grafico (Settimanale, Mensile, Annuale)
+- L'indirizzo ip dell'utente (ai fini del logging remoto)
+
+#### Cache locale degli input ####
+Alla chiusura il sistema salva su file binario tutti i dati che appaiono inseriti, specificatamente
+i campi relativi al gruppo "Inserisci Voce".
+
+#### BASE DI DATI ####
+Il sistema archivia i dati:
+- data di inseritmento, titolo/descrizione e l'importo (negativo o positivo) per ogni voce inserita
+
+#### File di log remoto in XML ####
+Il sistema invia una riga di log ad ogni evento di seguito:
+- Avvio dell'applicazione
+- Pressione di un pulsante
+- Selezione di una voce nella combo-box
+- Termine dell'applicazione
