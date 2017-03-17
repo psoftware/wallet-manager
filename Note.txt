@@ -1,0 +1,15 @@
+## Domande Cimino ##
+- metodi statici
+- va bene la classe di conf utilizzando metodi statici?
+
+## Modifiche ultima sessione di lavoro ##
+aggiunto classe per il file di configurazione
+aggiunte dipendenze sul gestore principale
+
+## TODO ##
+inserire il tipo data dove necessario (abuso di stringhe)
+individuare tutte le classi statiche e sottolinearle
+prototipazione ComboBox
+prototipazione Grafico
+classe per il grafico
+progettare classe (eventuale) per l'import da file XML delle voci
