@@ -1,15 +1,25 @@
 ## Domande Cimino ##
 - metodi statici
 - va bene la classe di conf utilizzando metodi statici?
+- ci sono due tipi di Prototipazione. Come vengono scelte e come si operano?
+- HBox, devo prototiparle?
+- DatePicker esiste? Devo prototiparlo???????????
+- Ciclo fasi del progetto, va rifatto dall'inizio?
+- ho dimenticato di inserire DOCUMENTAZIONE nella fase di Analisi
+- va bene la classe FileEntrateXML?
 
 ## Modifiche ultima sessione di lavoro ##
 aggiunto classe per il file di configurazione
 aggiunte dipendenze sul gestore principale
 
 ## TODO ##
+fase analisi: uniformare i nomi voci/entrate
 inserire il tipo data dove necessario (abuso di stringhe)
 individuare tutte le classi statiche e sottolinearle
 prototipazione ComboBox
+prototipazione Selettore File
 prototipazione Grafico
+prototipazione Scelta File
 classe per il grafico
 progettare classe (eventuale) per l'import da file XML delle voci
+fare file XSD per inserimento Entrate e Configurazione!
