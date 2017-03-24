@@ -1,0 +1,14 @@
+- modificare termine Entrata in GuadagnoSpesa
+- CacheInputFinestra -> CacheGestioneMonetaria/CacheInserimentoStorico
+- dare competenza alla classe cache di leggere/salvare i dati nella cache innvece che dalla Finestra
+- la relazione tra GMFinestra -> classeCache diventa << call >>
+- creare ValidatoreXML per fare una validazione globale degli XML (un solo metodo statico che prende come parametri il file xml e il file xsd)
+
+- prototipare DatePicker, RadioButton, ComboBox, HBox (alla fine), SelettoreFile, Grafico
+
+data 20/03/2017
+da aggiungere sul registro 11:19-12:14
+
+a 20 ore iniziare sviluppo
+
+Ricevimento 15 ore, abbiamo appurato che: bisogna cambiare il termine Entrata in GuadagnoSpesa; il nome della classe CacheInputFinestra va cambiato con CacheGestioneMonetaria e la classe deve occuparsi di aggiornare gli elementi dell'interfaccia grafica; bisogna creare una classe ValidatoreXML che si occupa di offrire un metodo per la validazione (parametri file XML, file XSD); la relazione tra la classe della cache e GestioneMonetariaWindow è una <<call>>.
