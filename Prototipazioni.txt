@@ -1,0 +1,58 @@
+#####   DATEPICKER   #####
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate; <=================	da prototipare
+
+public DatePicker datePicker = new DatePicker();
+datePicker.setLayoutX(11);
+datePicker.setLayoutY(40);
+
+LocalDate asd = datePicker.getValue();
+
+#####   RADIOBUTTON   #####
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;  <==================== da prototipare
+
+RadioButton button1 = new RadioButton("select first");
+RadioButton button2 = new RadioButton("select second");
+ToggleGroup tg = new ToggleGroup();
+
+button1.setLayoutX(0);
+button1.setLayoutY(100);
+button2.setLayoutX(70);
+button2.setLayoutY(130);
+button1.setToggleGroup(tg);
+button2.setToggleGroup(tg);
+button1.setSelected(true);
+
+button1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Selezionato button1");
+            }
+        });
+
+#####   FILECHOOSER   #####
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;	<======	da prototipare
+import java.io.File;					<====== dipendenza
+
+// scrivere un metodo privato per acquisire il percorso del file
+FileChooser fileChooser = new FileChooser();
+fileChooser.setTitle("Seleziona il file XML");
+fileChooser.getExtensionFilters().addAll(
+        new ExtensionFilter("File di GuadagniSpese XML", "*.xml"));
+File selectedFile = fileChooser.showOpenDialog(primaryStage);
+System.out.println(selectedFile.getAbsolutePath());
+
+#####   LINECHART   #####
+import javafx.scene.chart.*;
+
+final NumberAxis xAxis = new NumberAxis();
+final NumberAxis yAxis = new NumberAxis();
+lc = new LineChart(xAxis, yAxis);
+        
+XYChart.Series series = new XYChart.Series();
+series.setName("Riepilogo Guadagni/Spese");
+series.getData().add(new XYChart.Data(1, 23));
+series.getData().add(new XYChart.Data(2, 14));
+lc.getData().add(series);
