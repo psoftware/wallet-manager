@@ -56,3 +56,30 @@ series.setName("Riepilogo Guadagni/Spese");
 series.getData().add(new XYChart.Data(1, 23));
 series.getData().add(new XYChart.Data(2, 14));
 lc.getData().add(series);
+
+#####   COMBOBOX    #####
+import javafx.scene.control.*;
+import javafx.collections.*;
+import java.util.*; //ArrayList e List
+
+// prova ArrayList
+ArrayList xmlcateg = new ArrayList();
+xmlcateg.add("tasse");
+xmlcateg.add("stipendio");
+xmlcateg.add("svago");
+
+// questo metodo serve per convertire una ArrayList in una ObservableList
+ObservableList<String> categList = FXCollections.observableArrayList(xmlcateg);
+comboBox = new ComboBox(categList);
+// selezione del primo elemento della Observable List
+comboBox.getSelectionModel().select(0);
+// per ottenere la voce selezionata
+System.out.println(comboBox.getSelectionModel().getSelectedItem());
+        
+// handler per click su una voce
+comboBox.setOnAction(new EventHandler<ActionEvent>() {
+     @Override
+     public void handle(ActionEvent event) {
+        System.out.println("Selezionato " + comboBox.getSelectionModel().getSelectedItem());
+    }
+});

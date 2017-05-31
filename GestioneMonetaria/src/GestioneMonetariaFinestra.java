@@ -20,7 +20,12 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.io.File;
+import java.util.ArrayList;
 import javafx.scene.chart.*;
+
+import javafx.scene.control.*;
+import javafx.collections.*;
+import java.util.List;
 
 /**
  *
@@ -35,6 +40,8 @@ public class GestioneMonetariaFinestra extends Application {
     ToggleGroup tg = new ToggleGroup();
     
     LineChart lc;
+    
+    ComboBox comboBox;
     
     @Override
     public void start(Stage primaryStage) {
@@ -92,9 +99,30 @@ public class GestioneMonetariaFinestra extends Application {
         series.getData().add(new XYChart.Data(1, 23));
         series.getData().add(new XYChart.Data(2, 14));
         lc.getData().add(series);
-        //------------------------------------------
-        Group grp = new Group(btn, datePicker, button1, button2, lc);
         
+        //------------------------------------------
+        ArrayList xmlcateg = new ArrayList();
+        xmlcateg.add("tasse");
+        xmlcateg.add("stipendio");
+        xmlcateg.add("svago");
+        // questo metodo serve per convertire una ArrayList in una ObservableList
+        ObservableList<String> categList = FXCollections.observableArrayList(xmlcateg);
+        comboBox = new ComboBox(categList);
+        // selezione del primo elemento della Observable List
+        comboBox.getSelectionModel().select(0);
+        // per ottenere la voce selezionata
+        System.out.println(comboBox.getSelectionModel().getSelectedItem());
+        
+        // handler per click su una voce
+        comboBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Selezionato " + comboBox.getSelectionModel().getSelectedItem());
+            }
+        });
+
+        //------------------------------------------
+        Group grp = new Group(btn, datePicker, button1, button2, comboBox);
         
         /*StackPane root = new StackPane();
         root.getChildren().add(btn);
