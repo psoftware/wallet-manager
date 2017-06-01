@@ -23,6 +23,7 @@ import javafx.collections.*;
  * @author Antonio Le Caldare
  */
 public class GestioneMonetariaFinestra extends Application {
+    private Stage mainStage;
     
     public DatePicker pickerDataInserimento;
     public TextField tboxDescrizione;
@@ -128,15 +129,20 @@ public class GestioneMonetariaFinestra extends Application {
             comboPeriodoGrafico);
         
         Scene scene = new Scene(grp, 600, 600);
+        mainStage = primaryStage;
         primaryStage.setTitle("Gestione Monetaria");
         primaryStage.setScene(scene);
         
         impostaHandler();
-        
+        CacheGestioneMonetaria.caricaDaFile(this);
         primaryStage.show();
     }
     
     private void impostaHandler() {
+        GestioneMonetariaFinestra istanzaglobale = this;
+        mainStage.setOnCloseRequest((WindowEvent we) ->
+            { CacheGestioneMonetaria.salvaSuFile(istanzaglobale); });
+
         btnInserisci.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -147,8 +153,7 @@ public class GestioneMonetariaFinestra extends Application {
         btnImporta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Stage stage = (Stage)btnImporta.getScene().getWindow();
-                apriDialogSelezioneFile(stage);
+                apriDialogSelezioneFile(mainStage);
             }
         });
         

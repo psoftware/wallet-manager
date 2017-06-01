@@ -1,3 +1,5 @@
+Classe Finestra
+- ho aggiunto primaryStage come membro privato della classe (per gli eventi)
 - tboxData è stato rinominato in pickerDataInserimento
 - tboxData è stato rinominato in pickerDataInizioFiltro
 - tboxData è stato rinominato in pickerDataFineFiltro
@@ -7,5 +9,19 @@
 
 ci vorrebbe un metodo dal database per ottenere il saldo totale
 
-Cose non risolte:
+Classe Cache:
+- Modificare membri dato (uso delle LocalDate, del termine InserimentoVoce e degli index per combobox)
+public LocalDate dataInserimentoVoce;
+public String descrizioneInserimentoVoce;
+public String importoInserimentoVoce;
+public int indexCategoriaInserimentoVoce;
+public Boolean accreditoInserimentoVoce;
+public LocalDate dataInizioFiltro;
+public LocalDate dataFineFiltro;
+public int indexCategoriaFiltro;
+public String descrizioneParzialeFiltro;
+- Aggiunti metodi statici privati caricaBin e salvaBin
+
+Cose non risolte (CHIEDERE A CIMINO):
 - il metodo start di GestioneMonetariaFinestra è troppo grande ma non si può scomporre
+- per le ComboBox devo mantenere per forza l'indice della voce selezionata e non il testo
