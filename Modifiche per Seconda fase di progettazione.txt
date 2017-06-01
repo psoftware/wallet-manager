@@ -22,6 +22,11 @@ public int indexCategoriaFiltro;
 public String descrizioneParzialeFiltro;
 - Aggiunti metodi statici privati caricaBin e salvaBin
 
+Altro:
+- Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
+- l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi
+
 Cose non risolte (CHIEDERE A CIMINO):
 - il metodo start di GestioneMonetariaFinestra è troppo grande ma non si può scomporre
 - per le ComboBox devo mantenere per forza l'indice della voce selezionata e non il testo
+- In GuadagnoSpesa dovrei usare le date

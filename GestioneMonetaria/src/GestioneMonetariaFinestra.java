@@ -13,10 +13,6 @@ import javafx.stage.*;
 import javafx.scene.Group;
 
 import javafx.stage.FileChooser.ExtensionFilter;
-import java.util.ArrayList;
-import javafx.scene.chart.*;
-
-import javafx.collections.*;
 
 /**
  *
@@ -45,6 +41,8 @@ public class GestioneMonetariaFinestra extends Application {
     public Label lblSaldoTotale;
     
     public ComboBox comboPeriodoGrafico;
+    
+    private TabellaVisualeGuadagniSpese tabEntrate;
     
     @Override
     public void start(Stage primaryStage) {
@@ -120,13 +118,17 @@ public class GestioneMonetariaFinestra extends Application {
         comboPeriodoGrafico = new ComboBox();
         comboPeriodoGrafico.setLayoutX(200-10);
         comboPeriodoGrafico.setLayoutY(400);
+        
+        tabEntrate = new TabellaVisualeGuadagniSpese();
+        tabEntrate.setLayoutX(200);
+        tabEntrate.setLayoutY(200);
 
         //------------------------------------------
         Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
             comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, tboxFilePicker,
             btnInserisci, btnImporta, pickerDataInizioFiltro, pickerDataFineFiltro,
             comboCategoriaFiltro, tboxDescrParziale, btnCerca, lblSaldoTotale,
-            comboPeriodoGrafico);
+            comboPeriodoGrafico, tabEntrate);
         
         Scene scene = new Scene(grp, 600, 600);
         mainStage = primaryStage;
