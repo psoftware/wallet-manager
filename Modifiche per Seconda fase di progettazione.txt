@@ -1,0 +1,11 @@
+- tboxData è stato rinominato in pickerDataInserimento
+- tboxData è stato rinominato in pickerDataInizioFiltro
+- tboxData è stato rinominato in pickerDataFineFiltro
+- cambiare tipi TextBox in TextField
+- aggiunto parametro al metodo apriDialogSelezioneFile(Stage stage)
+- mancano tutte le label nella sezione di inserimento voci
+
+ci vorrebbe un metodo dal database per ottenere il saldo totale
+
+Cose non risolte:
+- il metodo start di GestioneMonetariaFinestra è troppo grande ma non si può scomporre

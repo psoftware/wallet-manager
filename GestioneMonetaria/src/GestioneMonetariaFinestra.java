@@ -3,138 +3,184 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.io.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.event.*;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.stage.*;
 
-import javafx.scene.control.DatePicker;
-import java.time.LocalDate;
 import javafx.scene.Group;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 
-import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import java.io.File;
 import java.util.ArrayList;
 import javafx.scene.chart.*;
 
-import javafx.scene.control.*;
 import javafx.collections.*;
-import java.util.List;
 
 /**
  *
  * @author Antonio Le Caldare
  */
 public class GestioneMonetariaFinestra extends Application {
-    public DatePicker datePicker = new DatePicker();
     
+    public DatePicker pickerDataInserimento;
+    public TextField tboxDescrizione;
+    public TextField tboxImporto;
+    public ComboBox comboCategoriaInserimento;
+    public RadioButton radiobtnAccredito;
+    public RadioButton radiobtnAddebito;
     
-    RadioButton button1 = new RadioButton("select first");
-    RadioButton button2 = new RadioButton("select second");
-    ToggleGroup tg = new ToggleGroup();
+    public TextField tboxFilePicker;
+    public Button btnInserisci;
+    public Button btnImporta;
     
-    LineChart lc;
+    public DatePicker pickerDataInizioFiltro;
+    public DatePicker pickerDataFineFiltro;
+    public ComboBox comboCategoriaFiltro;
+    public TextField tboxDescrParziale;
+    public Button btnCerca;
     
-    ComboBox comboBox;
+    public Label lblSaldoTotale;
+    
+    public ComboBox comboPeriodoGrafico;
     
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
+        pickerDataInserimento = new DatePicker();
+        pickerDataInserimento.setLayoutX(10);
+        pickerDataInserimento.setLayoutY(10);
+        
+        tboxDescrizione = new TextField();
+        tboxDescrizione.setLayoutX(10);
+        tboxDescrizione.setLayoutY(40);
+        
+        tboxImporto = new TextField();
+        tboxImporto.setLayoutX(10);
+        tboxImporto.setLayoutY(70);
+        
+        comboCategoriaInserimento = new ComboBox();
+        comboCategoriaInserimento.setLayoutX(10);
+        comboCategoriaInserimento.setLayoutY(100);
+        
+        // il toggle group mi serve per associare i due RadioButton
+        ToggleGroup tg = new ToggleGroup();
+        radiobtnAccredito = new RadioButton();
+        radiobtnAccredito.setLayoutX(10);
+        radiobtnAccredito.setLayoutY(130);
+        radiobtnAccredito.setText("Accredito");
+        radiobtnAddebito = new RadioButton();
+        radiobtnAddebito.setLayoutX(90);
+        radiobtnAddebito.setLayoutY(130);
+        radiobtnAddebito.setText("Addebito");
+        radiobtnAccredito.setToggleGroup(tg);
+        radiobtnAddebito.setToggleGroup(tg);
+        radiobtnAccredito.setSelected(true);
+        
+        tboxFilePicker = new TextField();
+        tboxFilePicker.setLayoutX(10);
+        tboxFilePicker.setLayoutY(170);
+        
+        btnInserisci = new Button();
+        btnInserisci.setLayoutX(10);
+        btnInserisci.setLayoutY(200);
+        btnInserisci.setText("Inserisci");
+
+        btnImporta = new Button();
+        btnImporta.setLayoutX(40);
+        btnImporta.setLayoutY(230);
+        btnImporta.setText("Importa");
+
+        pickerDataInizioFiltro = new DatePicker();
+        pickerDataInizioFiltro.setLayoutX(200);
+        pickerDataInizioFiltro.setLayoutY(10);
+        
+        pickerDataFineFiltro = new DatePicker();
+        pickerDataFineFiltro.setLayoutX(200);
+        pickerDataFineFiltro.setLayoutY(40);
+        
+        comboCategoriaFiltro = new ComboBox();
+        comboCategoriaFiltro.setLayoutX(200);
+        comboCategoriaFiltro.setLayoutY(70);
+        
+        tboxDescrParziale = new TextField();
+        tboxDescrParziale.setLayoutX(200);
+        tboxDescrParziale.setLayoutY(100);
+        
+        btnCerca = new Button();
+        btnCerca.setLayoutX(200);
+        btnCerca.setLayoutY(130);
+        btnCerca.setText("Cerca");
+
+        lblSaldoTotale = new Label("Saldo Totale");
+        lblSaldoTotale.setLayoutX(200);
+        lblSaldoTotale.setLayoutY(160);
+
+        comboPeriodoGrafico = new ComboBox();
+        comboPeriodoGrafico.setLayoutX(200-10);
+        comboPeriodoGrafico.setLayoutY(400);
+
+        //------------------------------------------
+        Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
+            comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, tboxFilePicker,
+            btnInserisci, btnImporta, pickerDataInizioFiltro, pickerDataFineFiltro,
+            comboCategoriaFiltro, tboxDescrParziale, btnCerca, lblSaldoTotale,
+            comboPeriodoGrafico);
+        
+        Scene scene = new Scene(grp, 600, 600);
+        primaryStage.setTitle("Gestione Monetaria");
+        primaryStage.setScene(scene);
+        
+        impostaHandler();
+        
+        primaryStage.show();
+    }
+    
+    private void impostaHandler() {
+        btnInserisci.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LocalDate asd = datePicker.getValue();
-                System.out.println(asd.toString());
-                System.out.println("Hello World!");
+                
             }
         });
         
-        button1.setOnAction(new EventHandler<ActionEvent>() {
+        btnImporta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Selezionato button1");
+                Stage stage = (Stage)btnImporta.getScene().getWindow();
+                apriDialogSelezioneFile(stage);
             }
         });
         
-        button2.setOnAction(new EventHandler<ActionEvent>() {
+        btnCerca.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Selezionato button2");
+                
             }
         });
         
-        //------------------------------------------
-        datePicker.setLayoutX(11);
-        datePicker.setLayoutY(40);
-        //------------------------------------------
-        button1.setLayoutX(0);
-        button1.setLayoutY(100);
-        button2.setLayoutX(70);
-        button2.setLayoutY(130);
-        button1.setToggleGroup(tg);
-        button2.setToggleGroup(tg);
-        button1.setSelected(true);
-        //------------------------------------------
+        btnCerca.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        comboCategoriaFiltro.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+    }
+    
+    private String apriDialogSelezioneFile(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleziona il file XML");
         fileChooser.getExtensionFilters().addAll(
                 new ExtensionFilter("File di GuadagniSpese XML", "*.xml"));
-        //File selectedFile = fileChooser.showOpenDialog(primaryStage);
-        //System.out.println(selectedFile.getAbsolutePath());
-        //------------------------------------------
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        lc = new LineChart(xAxis, yAxis);
-        
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Riepilogo Guadagni/Spese");
-        series.getData().add(new XYChart.Data(1, 23));
-        series.getData().add(new XYChart.Data(2, 14));
-        lc.getData().add(series);
-        
-        //------------------------------------------
-        ArrayList xmlcateg = new ArrayList();
-        xmlcateg.add("tasse");
-        xmlcateg.add("stipendio");
-        xmlcateg.add("svago");
-        // questo metodo serve per convertire una ArrayList in una ObservableList
-        ObservableList<String> categList = FXCollections.observableArrayList(xmlcateg);
-        comboBox = new ComboBox(categList);
-        // selezione del primo elemento della Observable List
-        comboBox.getSelectionModel().select(0);
-        // per ottenere la voce selezionata
-        System.out.println(comboBox.getSelectionModel().getSelectedItem());
-        
-        // handler per click su una voce
-        comboBox.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Selezionato " + comboBox.getSelectionModel().getSelectedItem());
-            }
-        });
-
-        //------------------------------------------
-        Group grp = new Group(btn, datePicker, button1, button2, comboBox);
-        
-        /*StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        root.getChildren().add(datePicker);*/
-        
-        
-        
-        Scene scene = new Scene(grp, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        return selectedFile.getAbsolutePath();
     }
 
     /**
