@@ -5,6 +5,7 @@
  */
 import java.io.*;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.event.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -45,6 +46,7 @@ public class GestioneMonetariaFinestra extends Application {
     private TabellaVisualeGuadagniSpese tabEntrate;
     
     private ConfigurazioneXML conf;
+    private OperazioniDatabaseGuadagniSpese db;
     
     @Override
     public void start(Stage primaryStage) {
@@ -65,7 +67,9 @@ public class GestioneMonetariaFinestra extends Application {
         tboxImporto.setLayoutX(10);
         tboxImporto.setLayoutY(70);
         
-        comboCategoriaInserimento = new ComboBox();
+        comboCategoriaInserimento =
+                new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
+        comboCategoriaInserimento.getSelectionModel().select(0);
         comboCategoriaInserimento.setLayoutX(10);
         comboCategoriaInserimento.setLayoutY(100);
         
@@ -105,7 +109,9 @@ public class GestioneMonetariaFinestra extends Application {
         pickerDataFineFiltro.setLayoutX(200);
         pickerDataFineFiltro.setLayoutY(40);
         
-        comboCategoriaFiltro = new ComboBox();
+        comboCategoriaFiltro =
+                new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
+        comboCategoriaFiltro.getSelectionModel().select(0);
         comboCategoriaFiltro.setLayoutX(200);
         comboCategoriaFiltro.setLayoutY(70);
         
@@ -143,6 +149,10 @@ public class GestioneMonetariaFinestra extends Application {
         
         impostaHandler();
         CacheGestioneMonetaria.caricaDaFile(this);
+        
+        db = new OperazioniDatabaseGuadagniSpese("jdbc:mysql://localhost:3306/gestionemonetaria", "root","");
+        tabEntrate.aggiornaListaGuadagniSpese(db.ottieniGuadagniSpese());
+
         primaryStage.show();
     }
     
@@ -154,7 +164,14 @@ public class GestioneMonetariaFinestra extends Application {
         btnInserisci.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+                int importo = Integer.parseInt(tboxImporto.getText());
+                if(radiobtnAddebito.isSelected())
+                    importo = importo * -1;
+                db.aggiungiGuadagnoSpesa(
+                        pickerDataInserimento.getValue().toString(),
+                        tboxDescrizione.getText(),
+                        comboCategoriaInserimento.getSelectionModel().getSelectedItem().toString(),
+                        importo);
             }
         });
         
@@ -168,14 +185,14 @@ public class GestioneMonetariaFinestra extends Application {
         btnCerca.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
-            }
-        });
-        
-        btnCerca.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                
+                tabEntrate.aggiornaListaGuadagniSpese(
+                        db.ottieniGuadagniSpeseConFiltro(
+                                pickerDataInizioFiltro.getValue().toString(),
+                                pickerDataFineFiltro.getValue().toString(),
+                                comboCategoriaFiltro.getSelectionModel().getSelectedItem().toString(),
+                                tboxDescrParziale.getText()
+                        )
+                );
             }
         });
         

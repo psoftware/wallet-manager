@@ -38,3 +38,4 @@ Cose non risolte (CHIEDERE A CIMINO):
 - per le ComboBox devo mantenere per forza l'indice della voce selezionata e non il testo
 - In GuadagnoSpesa dovrei usare le date
 - Errori XML risolti ma restano problemi con gli attributi (mi serve aiuto)
+- Come gestire il discorso date? Sul db e la cache le tengo come date, nel bean e nell'xml come testo
