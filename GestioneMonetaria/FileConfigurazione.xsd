@@ -1,0 +1,24 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ConfigurazioneXML">
+    <xs:annotation>
+      <xs:documentation>ConfigurazioneXML.xml</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:short" name="limiteSpendibili"/>
+        <xs:element type="xs:string" name="vistaDefaultGrafico"/>
+        <xs:element type="xs:string" name="indirizzoIPUtente"/>
+        <xs:element name="listaCategorie">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="string" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:short" name="maxNumGuadagniSpeseTabella"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="tipoMoneta"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

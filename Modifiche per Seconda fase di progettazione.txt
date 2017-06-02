@@ -22,6 +22,10 @@ public int indexCategoriaFiltro;
 public String descrizioneParzialeFiltro;
 - Aggiunti metodi statici privati caricaBin e salvaBin
 
+Classe ConfigurazioneXML:
+- ho aggiunto il membro statico percorsoFileXSD e rinominato l'altro già presente in percorsoFileXML
+- MODIFICA IMPORTANTE -> la funzione caricaDaFile deve restituire un'istanza di ConfigurazioneXML
+
 Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
 - l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi
@@ -30,3 +34,4 @@ Cose non risolte (CHIEDERE A CIMINO):
 - il metodo start di GestioneMonetariaFinestra è troppo grande ma non si può scomporre
 - per le ComboBox devo mantenere per forza l'indice della voce selezionata e non il testo
 - In GuadagnoSpesa dovrei usare le date
+- Errori XML risolti ma restano problemi con gli attributi (mi serve aiuto)

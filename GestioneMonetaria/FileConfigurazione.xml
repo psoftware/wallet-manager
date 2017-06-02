@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ConfigurazioneXML.xml -->
+<ConfigurazioneXML tipoMoneta = "€">
+	<limiteSpendibili>1000</limiteSpendibili>
+	<vistaDefaultGrafico>Mensile</vistaDefaultGrafico>
+	<indirizzoIPUtente>127.0.0.1</indirizzoIPUtente>
+	<listaCategorie>
+		<string>Tasse</string>
+		<string>Stipendio</string>
+		<string>Svago</string>
+	</listaCategorie>
+	<maxNumGuadagniSpeseTabella>10</maxNumGuadagniSpeseTabella>
+</ConfigurazioneXML>

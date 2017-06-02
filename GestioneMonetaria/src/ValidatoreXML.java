@@ -29,7 +29,9 @@ public class ValidatoreXML {
           if (e instanceof SAXException) 
             System.out.println("Errore di validazione: " + e.getMessage());
           else
-            System.out.println(e.getMessage());
+            System.out.println("Errore generico: " + e.getMessage());
+          
+          e.printStackTrace();
         }
 
         return false;

@@ -44,8 +44,15 @@ public class GestioneMonetariaFinestra extends Application {
     
     private TabellaVisualeGuadagniSpese tabEntrate;
     
+    private ConfigurazioneXML conf;
+    
     @Override
     public void start(Stage primaryStage) {
+        //------------------------------------------
+        conf = ConfigurazioneXML.caricaDaFile();
+
+        //------------------------------------------
+        
         pickerDataInserimento = new DatePicker();
         pickerDataInserimento.setLayoutX(10);
         pickerDataInserimento.setLayoutY(10);
@@ -122,8 +129,7 @@ public class GestioneMonetariaFinestra extends Application {
         tabEntrate = new TabellaVisualeGuadagniSpese();
         tabEntrate.setLayoutX(200);
         tabEntrate.setLayoutY(200);
-
-        //------------------------------------------
+        
         Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
             comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, tboxFilePicker,
             btnInserisci, btnImporta, pickerDataInizioFiltro, pickerDataFineFiltro,
