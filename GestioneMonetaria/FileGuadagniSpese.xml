@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FileGuadagniSpese.xml -->
+<list>
+	<GuadagnoSpesa>
+		<data>
+			<value>asd</value>
+		</data>
+		<categoria>
+			<value>bddddd</value>
+		</categoria>
+		<descrizione>
+			<value>cdddd</value>
+		</descrizione>
+		<importo>
+			<value>12345678</value>
+		</importo>
+	</GuadagnoSpesa>
+	<GuadagnoSpesa>
+		<data>
+			<value>rrr</value>
+		</data>
+		<categoria>
+			<value>asd</value>
+		</categoria>
+		<descrizione>
+			<value>dsa</value>
+		</descrizione>
+		<importo>
+			<value>7777777</value>
+		</importo>
+	</GuadagnoSpesa>
+</list>

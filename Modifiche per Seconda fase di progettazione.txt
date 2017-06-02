@@ -26,6 +26,9 @@ Classe ConfigurazioneXML:
 - ho aggiunto il membro statico percorsoFileXSD e rinominato l'altro già presente in percorsoFileXML
 - MODIFICA IMPORTANTE -> la funzione caricaDaFile deve restituire un'istanza di ConfigurazioneXML
 
+Classe FileGuadagniSpeseXML:
+- ho aggiunto il membro statico percorsoFileXSD
+
 Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
 - l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi
