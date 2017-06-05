@@ -54,101 +54,15 @@ public class GestioneMonetariaFinestra extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        //------------------------------------------
         conf = ConfigurazioneXML.caricaDaFile();
         log = new InvioDatiLog("127.0.0.1", 8080, conf.indirizzoIPUtente);
+        db = new OperazioniDatabaseGuadagniSpese("jdbc:mysql://localhost:3306/gestionemonetaria", "root","");
 
-        //------------------------------------------
-        
-        pickerDataInserimento = new DatePicker();
-        pickerDataInserimento.setLayoutX(10);
-        pickerDataInserimento.setLayoutY(10);
-        
-        tboxDescrizione = new TextField();
-        tboxDescrizione.setLayoutX(10);
-        tboxDescrizione.setLayoutY(40);
-        
-        tboxImporto = new TextField();
-        tboxImporto.setLayoutX(10);
-        tboxImporto.setLayoutY(70);
-        
-        comboCategoriaInserimento =
-                new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
-        comboCategoriaInserimento.getSelectionModel().select(0);
-        comboCategoriaInserimento.setLayoutX(10);
-        comboCategoriaInserimento.setLayoutY(100);
-        
-        // il toggle group mi serve per associare i due RadioButton
-        ToggleGroup tg = new ToggleGroup();
-        radiobtnAccredito = new RadioButton();
-        radiobtnAccredito.setLayoutX(10);
-        radiobtnAccredito.setLayoutY(130);
-        radiobtnAccredito.setText("Accredito");
-        radiobtnAddebito = new RadioButton();
-        radiobtnAddebito.setLayoutX(90);
-        radiobtnAddebito.setLayoutY(130);
-        radiobtnAddebito.setText("Addebito");
-        radiobtnAccredito.setToggleGroup(tg);
-        radiobtnAddebito.setToggleGroup(tg);
-        radiobtnAccredito.setSelected(true);
-        
-        btnInserisci = new Button();
-        btnInserisci.setLayoutX(10);
-        btnInserisci.setLayoutY(150);
-        btnInserisci.setText("Inserisci");
-        
-        tboxFilePicker = new TextField();
-        tboxFilePicker.setLayoutX(10);
-        tboxFilePicker.setLayoutY(190);
-        
-        btnCarica = new Button();
-        btnCarica.setLayoutX(100);
-        btnCarica.setLayoutY(200);
-        btnCarica.setText("Carica");
-
-        btnImporta = new Button();
-        btnImporta.setLayoutX(40);
-        btnImporta.setLayoutY(230);
-        btnImporta.setText("Importa");
-
-        pickerDataInizioFiltro = new DatePicker();
-        pickerDataInizioFiltro.setLayoutX(200);
-        pickerDataInizioFiltro.setLayoutY(10);
-        
-        pickerDataFineFiltro = new DatePicker();
-        pickerDataFineFiltro.setLayoutX(200);
-        pickerDataFineFiltro.setLayoutY(40);
-        
-        comboCategoriaFiltro =
-                new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
-        comboCategoriaFiltro.getSelectionModel().select(0);
-        comboCategoriaFiltro.setLayoutX(200);
-        comboCategoriaFiltro.setLayoutY(70);
-        
-        tboxDescrParziale = new TextField();
-        tboxDescrParziale.setLayoutX(200);
-        tboxDescrParziale.setLayoutY(100);
-        
-        btnCerca = new Button();
-        btnCerca.setLayoutX(200);
-        btnCerca.setLayoutY(130);
-        btnCerca.setText("Cerca");
-
-        lblSaldoTotale = new Label("Saldo Totale");
-        lblSaldoTotale.setLayoutX(200);
-        lblSaldoTotale.setLayoutY(160);
-
-        comboPeriodoGrafico = new ComboBox();
-        comboPeriodoGrafico.setLayoutX(200-10);
-        comboPeriodoGrafico.setLayoutY(400);
-        
-        tabEntrate = new TabellaVisualeGuadagniSpese();
-        tabEntrate.setLayoutX(200);
-        tabEntrate.setLayoutY(200);
-        
-        grafico = new GraficoStatisticheMonetarie("Statistiche Monetarie");
-        grafico.setLayoutX(10);
-        grafico.setLayoutY(250);
+        impostaLayoutInserimentoVoce();
+        impostaLayoutImportaVoci();
+        impostaLayoutRicerca();
+        impostaLayoutGraficoStatistiche();
+        impostaHandler();
         
         Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
             comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, btnInserisci, tboxFilePicker,
@@ -160,15 +74,94 @@ public class GestioneMonetariaFinestra extends Application {
         mainStage = primaryStage;
         primaryStage.setTitle("Gestione Monetaria");
         primaryStage.setScene(scene);
-        
-        impostaHandler();
+
         CacheGestioneMonetaria.caricaDaFile(this);
-        
-        db = new OperazioniDatabaseGuadagniSpese("jdbc:mysql://localhost:3306/gestionemonetaria", "root","");
         aggiornaStatoFinanziario();
 
         log.invia("Avvio", "Applicazione");
         primaryStage.show();
+    }
+    
+    private void impostaLayoutInserimentoVoce() {
+        pickerDataInserimento = new DatePicker();
+        pickerDataInserimento.setLayoutX(10); pickerDataInserimento.setLayoutY(10);
+        
+        tboxDescrizione = new TextField();
+        tboxDescrizione.setLayoutX(10); tboxDescrizione.setLayoutY(40);
+        
+        tboxImporto = new TextField();
+        tboxImporto.setLayoutX(10); tboxImporto.setLayoutY(70);
+        
+        comboCategoriaInserimento =
+                new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
+        comboCategoriaInserimento.getSelectionModel().select(0);
+        comboCategoriaInserimento.setLayoutX(10); comboCategoriaInserimento.setLayoutY(100);
+        
+        // il toggle group mi serve per associare i due RadioButton
+        ToggleGroup tg = new ToggleGroup();
+        radiobtnAccredito = new RadioButton();
+        radiobtnAccredito.setLayoutX(10); radiobtnAccredito.setLayoutY(130);
+        radiobtnAccredito.setText("Accredito");
+        
+        radiobtnAddebito = new RadioButton();
+        radiobtnAddebito.setLayoutX(90); radiobtnAddebito.setLayoutY(130);
+        radiobtnAddebito.setText("Addebito");
+        
+        radiobtnAccredito.setToggleGroup(tg);
+        radiobtnAddebito.setToggleGroup(tg);
+        radiobtnAccredito.setSelected(true);
+        
+        btnInserisci = new Button();
+        btnInserisci.setLayoutX(10); btnInserisci.setLayoutY(150);
+        btnInserisci.setText("Inserisci");
+    }
+    
+    private void impostaLayoutImportaVoci() {
+        tboxFilePicker = new TextField();
+        tboxFilePicker.setLayoutX(10); tboxFilePicker.setLayoutY(190);
+
+        btnCarica = new Button();
+        btnCarica.setLayoutX(100); btnCarica.setLayoutY(200);
+        btnCarica.setText("Carica");
+
+        btnImporta = new Button();
+        btnImporta.setLayoutX(40); btnImporta.setLayoutY(230);
+        btnImporta.setText("Importa");
+    }
+    
+    private void impostaLayoutRicerca() {
+        pickerDataInizioFiltro = new DatePicker();
+        pickerDataInizioFiltro.setLayoutX(200); pickerDataInizioFiltro.setLayoutY(10);
+        
+        pickerDataFineFiltro = new DatePicker();
+        pickerDataFineFiltro.setLayoutX(200); pickerDataFineFiltro.setLayoutY(40);
+        
+        comboCategoriaFiltro =
+                new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
+        comboCategoriaFiltro.getSelectionModel().select(0);
+        comboCategoriaFiltro.setLayoutX(200); comboCategoriaFiltro.setLayoutY(70);
+        
+        tboxDescrParziale = new TextField();
+        tboxDescrParziale.setLayoutX(200); tboxDescrParziale.setLayoutY(100);
+        
+        btnCerca = new Button();
+        btnCerca.setLayoutX(200); btnCerca.setLayoutY(130);
+        btnCerca.setText("Cerca");
+        
+        tabEntrate = new TabellaVisualeGuadagniSpese();
+        tabEntrate.setLayoutX(200); tabEntrate.setLayoutY(200);
+        
+        lblSaldoTotale = new Label("Saldo Totale");
+        lblSaldoTotale.setLayoutX(200); lblSaldoTotale.setLayoutY(160);
+    }
+    
+    private void impostaLayoutGraficoStatistiche() {
+        comboPeriodoGrafico = new ComboBox();
+        comboPeriodoGrafico.setLayoutX(200-10); comboPeriodoGrafico.setLayoutY(400);
+        
+        grafico = new GraficoStatisticheMonetarie("Statistiche Monetarie");
+        grafico.setLayoutX(10);
+        grafico.setLayoutY(250);
     }
     
     private void impostaHandler() {

@@ -82,3 +82,45 @@
   <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
 </ElementoLog>
 
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Mon Jun 05 17:30:15 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>comboCategoriaFiltro</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Mon Jun 05 17:30:15 CEST 2017</dataOra>
+  <nomeEvento>Avvio</nomeEvento>
+  <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Mon Jun 05 17:30:39 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>comboCategoriaFiltro</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Mon Jun 05 17:30:39 CEST 2017</dataOra>
+  <nomeEvento>Avvio</nomeEvento>
+  <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Mon Jun 05 17:38:35 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>comboCategoriaFiltro</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Mon Jun 05 17:38:35 CEST 2017</dataOra>
+  <nomeEvento>Avvio</nomeEvento>
+  <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
+</ElementoLog>
+

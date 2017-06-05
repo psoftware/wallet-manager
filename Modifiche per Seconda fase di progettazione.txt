@@ -7,6 +7,7 @@ Classe Finestra
 - aggiunto parametro al metodo apriDialogSelezioneFile(Stage stage)
 - mancano tutte le label nella sezione di inserimento voci
 - aggiungere dipendenza a GuadagnoSpesa (per l'inserimento)
+- scompattato il main in più funzioni imposta* da aggiungere all'UML
 
 ci vorrebbe un metodo dal database per ottenere il saldo totale
 
@@ -38,6 +39,9 @@ Classe GraficoStatisticheMonetarie:
 
 Classe OperazioniDatabaseGuadagniSpese:
 - cambiati un po' di metodi, applicare tutto
+
+Clasee InvioDatiLog:
+- è stato rimossa la Data come parametro della funzione di invio
 
 AGGIUNTA CLASSE GuadagnoSpesa e rinominata quella vecchia in GuadagnoSpesaBean per colpa della data
 AGGIUNTA CLASSE LocalDateConverter PROTOTIPANDO XStream
