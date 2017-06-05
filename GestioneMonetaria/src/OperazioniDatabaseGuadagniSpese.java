@@ -36,6 +36,15 @@ public class OperazioniDatabaseGuadagniSpese {
             aggiungiGuadagnoSpesa(gs);
     }
     
+    public int ottieniSaldo()
+    {
+        try (Statement st = co.createStatement()) { 
+              ResultSet rs = st.executeQuery("SELECT SUM(importo) AS s FROM guadagnispese");  
+              rs.next();
+              return rs.getInt("s");
+        } catch (SQLException e) {System.err.println(e.getMessage()); return 0;}
+    }
+    
     public ArrayList<GuadagnoSpesa> ottieniGuadagniSpese() {
         ArrayList risultato = new ArrayList<>();
         try (Statement st = co.createStatement()) { 

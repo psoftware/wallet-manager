@@ -163,8 +163,7 @@ public class GestioneMonetariaFinestra extends Application {
         CacheGestioneMonetaria.caricaDaFile(this);
         
         db = new OperazioniDatabaseGuadagniSpese("jdbc:mysql://localhost:3306/gestionemonetaria", "root","");
-        tabEntrate.aggiornaListaGuadagniSpese(db.ottieniGuadagniSpese());
-        grafico.popolaGrafico(db.ottieniGuadagniSpese());
+        aggiornaStatoFinanziario();
 
         primaryStage.show();
     }
@@ -186,6 +185,7 @@ public class GestioneMonetariaFinestra extends Application {
                         comboCategoriaInserimento.getSelectionModel().getSelectedItem().toString(),
                         importo);
                 db.aggiungiGuadagnoSpesa(gs);
+                aggiornaStatoFinanziario();
             }
         });
         
@@ -208,6 +208,7 @@ public class GestioneMonetariaFinestra extends Application {
 
                 FileGuadagniSpeseXML filelista = new FileGuadagniSpeseXML(fileToImport);
                 db.aggiungiListaGuadagnoSpesa(filelista.caricaEntrate());
+                aggiornaStatoFinanziario();
             }
         });
         
@@ -240,6 +241,15 @@ public class GestioneMonetariaFinestra extends Application {
                 new ExtensionFilter("File di GuadagniSpese XML", "*.xml"));
         File selectedFile = fileChooser.showOpenDialog(stage);
         return selectedFile.getAbsolutePath();
+    }
+    
+    private void aggiornaStatoFinanziario()
+    {
+        tabEntrate.aggiornaListaGuadagniSpese(db.ottieniGuadagniSpese());
+        grafico.popolaGrafico(db.ottieniGuadagniSpese());
+        
+        int saldo = db.ottieniSaldo();
+        lblSaldoTotale.setText("Saldo Totale: " + saldo);
     }
 
     /**
