@@ -31,7 +31,10 @@ public class FileGuadagniSpeseXML {
                     new String(Files.readAllBytes(Paths.get(filename)));
 
             //convertiamolo in un'istanza di ArrayList<GuadagnoSpesa> e poi restituiamolo
-            return (ArrayList<GuadagnoSpesa>)new XStream().fromXML(filestring);
+            LocalDateConverter conv = new LocalDateConverter(); // (01)
+            XStream xs = new XStream();
+            xs.registerConverter(conv);                         // (01)
+            return (ArrayList<GuadagnoSpesa>)xs.fromXML(filestring);
 
         } catch (IOException ex) {
             System.out.println("errore: impossibile caricare la lista di GuadagniSpese XML");
@@ -39,3 +42,9 @@ public class FileGuadagniSpeseXML {
         }
     }
 }
+
+// (01) XStream non supporta il tipo LocalDate, quindi definiamo una classe che si
+//      occupa di gestire questo nuovo tipo. Non possiamo usare direttamente il
+//      tipo Date per questioni di integrazione con la classe OperazioniDatabaseGuadagniSpese:
+//      la libreria mysql lavora meglio con i tipi LocalDate. Usare Date porterebbe
+//      ad effettuare cast esplici abbastanza complessi.

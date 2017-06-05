@@ -8,34 +8,10 @@
         <xs:element name="GuadagnoSpesa" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="data">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element type="xs:string" name="value"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="categoria">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element type="xs:string" name="value"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="descrizione">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element type="xs:string" name="value"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="importo">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element type="xs:int" name="value"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
+              <xs:element type="xs:date" name="data"/>
+              <xs:element type="xs:string" name="categoria"/>
+              <xs:element type="xs:string" name="descrizione"/>
+              <xs:element type="xs:byte" name="importo"/>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -43,3 +19,4 @@
     </xs:complexType>
   </xs:element>
 </xs:schema>
+

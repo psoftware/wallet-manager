@@ -29,10 +29,11 @@ public class GestioneMonetariaFinestra extends Application {
     public ComboBox comboCategoriaInserimento;
     public RadioButton radiobtnAccredito;
     public RadioButton radiobtnAddebito;
+    public Button btnImporta;
     
     public TextField tboxFilePicker;
+    public Button btnCarica;
     public Button btnInserisci;
-    public Button btnImporta;
     
     public DatePicker pickerDataInizioFiltro;
     public DatePicker pickerDataFineFiltro;
@@ -89,14 +90,19 @@ public class GestioneMonetariaFinestra extends Application {
         radiobtnAddebito.setToggleGroup(tg);
         radiobtnAccredito.setSelected(true);
         
-        tboxFilePicker = new TextField();
-        tboxFilePicker.setLayoutX(10);
-        tboxFilePicker.setLayoutY(170);
-        
         btnInserisci = new Button();
         btnInserisci.setLayoutX(10);
-        btnInserisci.setLayoutY(200);
+        btnInserisci.setLayoutY(150);
         btnInserisci.setText("Inserisci");
+        
+        tboxFilePicker = new TextField();
+        tboxFilePicker.setLayoutX(10);
+        tboxFilePicker.setLayoutY(190);
+        
+        btnCarica = new Button();
+        btnCarica.setLayoutX(100);
+        btnCarica.setLayoutY(200);
+        btnCarica.setText("Carica");
 
         btnImporta = new Button();
         btnImporta.setLayoutX(40);
@@ -143,8 +149,8 @@ public class GestioneMonetariaFinestra extends Application {
         grafico.setLayoutY(250);
         
         Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
-            comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, tboxFilePicker,
-            btnInserisci, btnImporta, pickerDataInizioFiltro, pickerDataFineFiltro,
+            comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, btnInserisci, tboxFilePicker,
+            btnCarica, btnImporta, pickerDataInizioFiltro, pickerDataFineFiltro,
             comboCategoriaFiltro, tboxDescrParziale, btnCerca, lblSaldoTotale,
             comboPeriodoGrafico, tabEntrate, grafico);
         
@@ -183,10 +189,25 @@ public class GestioneMonetariaFinestra extends Application {
             }
         });
         
+        btnCarica.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String openedfile = apriDialogSelezioneFile(mainStage);
+                if(openedfile == null)
+                    return;
+                tboxFilePicker.setText(openedfile);
+            }
+        });
+
         btnImporta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                apriDialogSelezioneFile(mainStage);
+                String fileToImport = tboxFilePicker.getText();
+                if(fileToImport == null || fileToImport  == "")
+                    return;
+
+                FileGuadagniSpeseXML filelista = new FileGuadagniSpeseXML(fileToImport);
+                db.aggiungiListaGuadagnoSpesa(filelista.caricaEntrate());
             }
         });
         

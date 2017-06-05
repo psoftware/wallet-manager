@@ -2,31 +2,15 @@
 <!-- FileGuadagniSpese.xml -->
 <list>
 	<GuadagnoSpesa>
-		<data>
-			<value>asd</value>
-		</data>
-		<categoria>
-			<value>bddddd</value>
-		</categoria>
-		<descrizione>
-			<value>cdddd</value>
-		</descrizione>
-		<importo>
-			<value>12345678</value>
-		</importo>
+		<data>2017-07-01</data>
+		<categoria>Tasse</categoria>
+		<descrizione>Entrata File XML 1</descrizione>
+		<importo>20</importo>
 	</GuadagnoSpesa>
 	<GuadagnoSpesa>
-		<data>
-			<value>rrr</value>
-		</data>
-		<categoria>
-			<value>asd</value>
-		</categoria>
-		<descrizione>
-			<value>dsa</value>
-		</descrizione>
-		<importo>
-			<value>7777777</value>
-		</importo>
+		<data>2017-07-02</data>
+		<categoria>Tasse</categoria>
+		<descrizione>Entrata File XML 2</descrizione>
+		<importo>30</importo>
 	</GuadagnoSpesa>
 </list>
