@@ -39,7 +39,7 @@ public class OperazioniDatabaseGuadagniSpese {
     public ArrayList<GuadagnoSpesa> ottieniGuadagniSpese() {
         ArrayList risultato = new ArrayList<>();
         try (Statement st = co.createStatement()) { 
-              ResultSet rs = st.executeQuery("SELECT * FROM guadagnispese");  
+              ResultSet rs = st.executeQuery("SELECT * FROM guadagnispese ORDER BY datariferimento");  
               while (rs.next())
                 risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento").toLocalDate(),
                                                 rs.getString("categoria"),
@@ -55,7 +55,8 @@ public class OperazioniDatabaseGuadagniSpese {
         try ( PreparedStatement ps = co.prepareStatement(
                 "SELECT * FROM guadagnispese "
                 + "WHERE datariferimento >= ? AND datariferimento <= ? "
-                + "AND categoria LIKE ? and descrizione LIKE ?;");
+                + "AND categoria LIKE ? and descrizione LIKE ?; "
+                + " ORDER BY datariferimento");
         ) {
               ps.setDate(1, java.sql.Date.valueOf(datalnizio));
               ps.setDate(2, java.sql.Date.valueOf(dataFine));

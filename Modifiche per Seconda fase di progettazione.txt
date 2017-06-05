@@ -40,6 +40,7 @@ Classe OperazioniDatabaseGuadagniSpese:
 - cambiati un po' di metodi, applicare tutto
 
 AGGIUNTA CLASSE GuadagnoSpesa e rinominata quella vecchia in GuadagnoSpesaBean per colpa della data
+AGGIUNTA CLASSE LocalDateConverter PROTOTIPANDO XStream
 
 Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
