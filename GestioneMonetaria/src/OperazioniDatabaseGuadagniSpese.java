@@ -45,10 +45,14 @@ public class OperazioniDatabaseGuadagniSpese {
         } catch (SQLException e) {System.err.println(e.getMessage()); return 0;}
     }
     
-    public ArrayList<GuadagnoSpesa> ottieniGuadagniSpese() {
+    public ArrayList<GuadagnoSpesa> ottieniGuadagniSpese(int limiteEntrate) {
         ArrayList risultato = new ArrayList<>();
-        try (Statement st = co.createStatement()) { 
-              ResultSet rs = st.executeQuery("SELECT * FROM guadagnispese ORDER BY datariferimento");  
+        try (PreparedStatement ps = co.prepareStatement(
+                        "SELECT * FROM guadagnispese "
+                      + "ORDER BY datariferimento "
+                      + "LIMIT ?")) {
+              ps.setInt(1, limiteEntrate);
+              ResultSet rs = ps.executeQuery();  
               while (rs.next())
                 risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento").toLocalDate(),
                                                 rs.getString("categoria"),
@@ -59,18 +63,20 @@ public class OperazioniDatabaseGuadagniSpese {
     }
     
     public ArrayList ottieniGuadagniSpeseConFiltro(String datalnizio, String dataFine,
-            String categoria, String descrizioneParziale) {
+            String categoria, String descrizioneParziale, int limiteEntrate) {
         ArrayList risultato = new ArrayList<>();
         try ( PreparedStatement ps = co.prepareStatement(
                 "SELECT * FROM guadagnispese "
                 + "WHERE datariferimento >= ? AND datariferimento <= ? "
                 + "AND categoria LIKE ? and descrizione LIKE ? "
-                + " ORDER BY datariferimento");
+                + " ORDER BY datariferimento "
+                + "LIMIT ?");
         ) {
               ps.setDate(1, java.sql.Date.valueOf(datalnizio));
               ps.setDate(2, java.sql.Date.valueOf(dataFine));
               ps.setString(3, "%"+categoria+"%");
               ps.setString(4, "%"+descrizioneParziale+"%");
+              ps.setInt(5, limiteEntrate);
               ResultSet rs = ps.executeQuery();
               
               while (rs.next()) //12

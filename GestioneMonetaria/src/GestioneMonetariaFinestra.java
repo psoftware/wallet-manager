@@ -270,7 +270,8 @@ public class GestioneMonetariaFinestra extends Application {
                                 pickerDataInizioFiltro.getValue().toString(),
                                 pickerDataFineFiltro.getValue().toString(),
                                 comboCategoriaFiltro.getSelectionModel().getSelectedItem().toString(),
-                                tboxDescrParziale.getText()
+                                tboxDescrParziale.getText(),
+                                conf.maxNumGuadagniSpeseTabella
                         )
                 );
             }
@@ -280,7 +281,7 @@ public class GestioneMonetariaFinestra extends Application {
             @Override
             public void handle(ActionEvent event) {
                 log.invia("Click", "comboCategoriaFiltro");
-                grafico.popolaGrafico(db.ottieniGuadagniSpese(),
+                grafico.popolaGrafico(db.ottieniGuadagniSpese(conf.maxNumGuadagniSpeseTabella),
                         comboPeriodoGrafico.getSelectionModel().getSelectedIndex());
             }
         });
@@ -297,9 +298,10 @@ public class GestioneMonetariaFinestra extends Application {
     
     private void aggiornaStatoFinanziario()
     {
-        tabEntrate.aggiornaListaGuadagniSpese(db.ottieniGuadagniSpese());
-        grafico.popolaGrafico(db.ottieniGuadagniSpese(),
-                comboPeriodoGrafico.getSelectionModel().getSelectedIndex());
+        ArrayList<GuadagnoSpesa> listags =
+                db.ottieniGuadagniSpese(conf.maxNumGuadagniSpeseTabella);
+        tabEntrate.aggiornaListaGuadagniSpese(listags);
+        grafico.popolaGrafico(listags, comboPeriodoGrafico.getSelectionModel().getSelectedIndex());
         
         int saldo = db.ottieniSaldo();
         lblSaldoTotale.setText("Saldo Totale: " + saldo + " " + conf.tipoMoneta);

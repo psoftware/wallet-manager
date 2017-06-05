@@ -2217,3 +2217,171 @@
   <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
 </ElementoLog>
 
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:20:42 CEST 2017</dataOra>
+  <nomeEvento>Avvio</nomeEvento>
+  <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:11 CEST 2017</dataOra>
+  <nomeEvento>Avvio</nomeEvento>
+  <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:18 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:19 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:19 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:22 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:25 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:26 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:30 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:34 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:52 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:55 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:58 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:58 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:59 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:59 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:59 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:21:59 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:22:00 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:22:00 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:22:00 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnInserisci</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:22:10 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:22:13 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:22:17 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
+</ElementoLog>
+

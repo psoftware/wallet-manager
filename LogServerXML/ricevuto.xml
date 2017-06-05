@@ -1,6 +1,6 @@
 <ElementoLog>
   <indirizzoIP>127.0.0.1</indirizzoIP>
-  <dataOra>Tue Jun 06 00:03:58 CEST 2017</dataOra>
-  <nomeEvento>Avvio</nomeEvento>
-  <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
+  <dataOra>Tue Jun 06 00:22:17 CEST 2017</dataOra>
+  <nomeEvento>Click</nomeEvento>
+  <oggettoCoinvolto>btnCerca</oggettoCoinvolto>
 </ElementoLog>
