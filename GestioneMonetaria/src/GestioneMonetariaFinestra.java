@@ -50,11 +50,13 @@ public class GestioneMonetariaFinestra extends Application {
     
     private ConfigurazioneXML conf;
     private OperazioniDatabaseGuadagniSpese db;
+    private InvioDatiLog log;
     
     @Override
     public void start(Stage primaryStage) {
         //------------------------------------------
         conf = ConfigurazioneXML.caricaDaFile();
+        log = new InvioDatiLog("127.0.0.1", 8080, conf.indirizzoIPUtente);
 
         //------------------------------------------
         
@@ -165,6 +167,7 @@ public class GestioneMonetariaFinestra extends Application {
         db = new OperazioniDatabaseGuadagniSpese("jdbc:mysql://localhost:3306/gestionemonetaria", "root","");
         aggiornaStatoFinanziario();
 
+        log.invia("Avvio", "Applicazione");
         primaryStage.show();
     }
     
@@ -176,6 +179,7 @@ public class GestioneMonetariaFinestra extends Application {
         btnInserisci.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                log.invia("Click", "btnInserisci");
                 int importo = Integer.parseInt(tboxImporto.getText());
                 if(radiobtnAddebito.isSelected())
                     importo = importo * -1;
@@ -192,6 +196,7 @@ public class GestioneMonetariaFinestra extends Application {
         btnCarica.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                log.invia("Click", "btnCarica");
                 String openedfile = apriDialogSelezioneFile(mainStage);
                 if(openedfile == null)
                     return;
@@ -202,6 +207,7 @@ public class GestioneMonetariaFinestra extends Application {
         btnImporta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                log.invia("Click", "btnImporta");
                 String fileToImport = tboxFilePicker.getText();
                 if(fileToImport == null || fileToImport  == "")
                     return;
@@ -215,6 +221,7 @@ public class GestioneMonetariaFinestra extends Application {
         btnCerca.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                log.invia("Click", "btnCerca");
                 tabEntrate.aggiornaListaGuadagniSpese(
                         db.ottieniGuadagniSpeseConFiltro(
                                 pickerDataInizioFiltro.getValue().toString(),
@@ -229,7 +236,7 @@ public class GestioneMonetariaFinestra extends Application {
         comboCategoriaFiltro.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+                log.invia("Click", "comboCategoriaFiltro");
             }
         });
     }

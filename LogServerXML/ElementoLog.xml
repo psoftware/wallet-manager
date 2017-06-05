@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ElementoLog.xml -->
+<ElementoLog>
+	<indirizzoIP>Stringa</indirizzoIP>
+	<dataOra>Stringa</dataOra>
+	<nomeEvento>Stringa</nomeEvento>
+	<oggettoCoinvolto>Stringa</oggettoCoinvolto>
+</ElementoLog>
