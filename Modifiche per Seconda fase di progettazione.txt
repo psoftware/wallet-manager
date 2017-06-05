@@ -35,6 +35,9 @@ Classe GraficoStatisticheMonetarie:
 - nel documento di progetto va detto che il Grafico ha due linee, una per le entrate e l'altra per le uscite
 - FAREEEEEEEE -> Non ho gestito la funzionalità della visualizzazione settimanale/mensile, dovrei aggiungere un metodo
 
+AGGIUNTA CLASSE GuadagnoSpesa e rinominata quella vecchia in GuadagnoSpesaBean per colpa della data
+CONVERTITI TUTTI I TIPI LocalDate IN Date
+
 Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
 - l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi

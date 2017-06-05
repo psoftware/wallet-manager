@@ -35,7 +35,7 @@ public class OperazioniDatabaseGuadagniSpese {
         try (Statement st = co.createStatement()) { 
               ResultSet rs = st.executeQuery("SELECT * FROM guadagnispese");  
               while (rs.next())
-                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento").toString(),
+                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento"),
                                                 rs.getString("categoria"),
                                                 rs.getString("descrizione"),
                                                 rs.getInt("importo")));
@@ -58,7 +58,7 @@ public class OperazioniDatabaseGuadagniSpese {
               ResultSet rs = ps.executeQuery();
               
               while (rs.next()) //12
-                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento").toString(),
+                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento"),
                                                 rs.getString("categoria"),
                                                 rs.getString("descrizione"),
                                                 rs.getInt("importo")));

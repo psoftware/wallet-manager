@@ -1,5 +1,5 @@
-import javafx.beans.property.*;
-
+import java.time.*;
+import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,28 +10,15 @@ import javafx.beans.property.*;
  * @author Antonio Le Caldare
  */
 public class GuadagnoSpesa {
-    private SimpleStringProperty data;
-    private SimpleStringProperty categoria;
-    private SimpleStringProperty descrizione;
-    private SimpleIntegerProperty importo;
-    
-    public GuadagnoSpesa(String d, String c, String des, Integer i) {
-        data = new SimpleStringProperty(d);
-        categoria = new SimpleStringProperty(c);
-        descrizione = new SimpleStringProperty(des);
-        importo = new SimpleIntegerProperty(i);
-    }
-    
-    public String getData() {
-        return data.getValue();
-    }
-    public String getCategoria() {
-        return categoria.getValue();
-    }
-    public String getDescrizione() {
-        return descrizione.getValue();
-    }
-    public int getImporto() {
-        return importo.getValue();
-    }
+    public Date data;
+    public String categoria;
+    public String descrizione;
+    public Integer importo;
+
+    public GuadagnoSpesa(Date data, String categoria, String descrizione, Integer importo) {
+        this.data = data;
+        this.categoria = categoria;
+        this.descrizione = descrizione;
+        this.importo = importo;
+    }   
 }

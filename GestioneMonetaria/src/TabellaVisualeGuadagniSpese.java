@@ -12,21 +12,21 @@ import javafx.scene.control.cell.*;
  *
  * @author Antonio Le Caldare
  */
-public class TabellaVisualeGuadagniSpese extends TableView<GuadagnoSpesa> {
-    private final ObservableList<GuadagnoSpesa> listaOsservabileGuadagniSpese
+public class TabellaVisualeGuadagniSpese extends TableView<GuadagnoSpesaBean> {
+    private final ObservableList<GuadagnoSpesaBean> listaOsservabileGuadagniSpese
             = FXCollections.observableArrayList(); //(01)
     
     public TabellaVisualeGuadagniSpese() {
         TableColumn dataCol = new TableColumn("DATA");
         dataCol.setCellValueFactory(new PropertyValueFactory<>("Data"));
  
-        TableColumn categoriaCol = new TableColumn("CATEGORIA"); //3
+        TableColumn categoriaCol = new TableColumn("CATEGORIA");
         categoriaCol.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
         
-        TableColumn descrCol = new TableColumn("DESCRIZIONE"); //3
+        TableColumn descrCol = new TableColumn("DESCRIZIONE");
         descrCol.setCellValueFactory(new PropertyValueFactory<>("Descrizione"));
         
-        TableColumn importoCol = new TableColumn("IMPORTO"); //3
+        TableColumn importoCol = new TableColumn("IMPORTO");
         importoCol.setCellValueFactory(new PropertyValueFactory<>("Importo"));
         
         this.setItems(listaOsservabileGuadagniSpese);
@@ -35,8 +35,14 @@ public class TabellaVisualeGuadagniSpese extends TableView<GuadagnoSpesa> {
     
     public void aggiornaListaGuadagniSpese(List<GuadagnoSpesa> entrate) {
         listaOsservabileGuadagniSpese.clear();
-        listaOsservabileGuadagniSpese.addAll(entrate);
+
+        for(GuadagnoSpesa gs : entrate) // (02)
+            listaOsservabileGuadagniSpese.add(
+                    new GuadagnoSpesaBean(gs.data.toString(), gs.categoria, gs.descrizione, gs.importo)
+            );
     }
 }
 
 // (01) La lista va inizializzata
+// (02) Gli oggetti di tipo GuadagnoSpesa vanno convertiti in GuadagnoSpesaBeen
+//      perchè relativi alla tabella che dobbiamo popolare

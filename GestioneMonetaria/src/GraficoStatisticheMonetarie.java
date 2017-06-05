@@ -27,9 +27,9 @@ public class GraficoStatisticheMonetarie extends LineChart {
     }
     public void popolaGrafico(ArrayList<GuadagnoSpesa> listaEntrate) {
         for(int i=0; i < listaEntrate.size(); i++)
-            if(listaEntrate.get(i).getImporto() > 0)
-                seriePuntiPos.getData().add(new XYChart.Data(i, listaEntrate.get(i).getImporto()));
+            if(listaEntrate.get(i).importo > 0)
+                seriePuntiPos.getData().add(new XYChart.Data(i, listaEntrate.get(i).importo));
             else
-                seriePuntiNeg.getData().add(new XYChart.Data(i, listaEntrate.get(i).getImporto()));
+                seriePuntiNeg.getData().add(new XYChart.Data(i, listaEntrate.get(i).importo));
     } 
 }

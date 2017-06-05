@@ -139,7 +139,7 @@ public class GestioneMonetariaFinestra extends Application {
         
         grafico = new GraficoStatisticheMonetarie("Statistiche Monetarie");
         grafico.setLayoutX(10);
-        grafico.setLayoutY(210);
+        grafico.setLayoutY(250);
         
         Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
             comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, tboxFilePicker,
