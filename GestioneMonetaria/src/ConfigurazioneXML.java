@@ -32,7 +32,10 @@ public class ConfigurazioneXML {
                     new String(Files.readAllBytes(Paths.get(percorsoFileXML)));
 
             //convertiamolo in un'istanza di ConfigurazioneXML e poi restituiamolo
-            ConfigurazioneXML risultato = (ConfigurazioneXML)new XStream().fromXML(filestring);
+            XStream xs = new XStream();
+            xs.useAttributeFor(ConfigurazioneXML.class, "tipoMoneta");
+            ConfigurazioneXML risultato = (ConfigurazioneXML)xs.fromXML(filestring);
+            System.out.println(risultato.tipoMoneta);
             return risultato;
         } catch (IOException ex) {
             System.out.println("errore: impossibile caricare la configurazione XML");
