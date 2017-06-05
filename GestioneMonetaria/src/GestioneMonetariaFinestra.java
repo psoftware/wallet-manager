@@ -44,6 +44,7 @@ public class GestioneMonetariaFinestra extends Application {
     public ComboBox comboPeriodoGrafico;
     
     private TabellaVisualeGuadagniSpese tabEntrate;
+    private GraficoStatisticheMonetarie grafico;
     
     private ConfigurazioneXML conf;
     private OperazioniDatabaseGuadagniSpese db;
@@ -136,11 +137,15 @@ public class GestioneMonetariaFinestra extends Application {
         tabEntrate.setLayoutX(200);
         tabEntrate.setLayoutY(200);
         
+        grafico = new GraficoStatisticheMonetarie("Statistiche Monetarie");
+        grafico.setLayoutX(10);
+        grafico.setLayoutY(210);
+        
         Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
             comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, tboxFilePicker,
             btnInserisci, btnImporta, pickerDataInizioFiltro, pickerDataFineFiltro,
             comboCategoriaFiltro, tboxDescrParziale, btnCerca, lblSaldoTotale,
-            comboPeriodoGrafico, tabEntrate);
+            comboPeriodoGrafico, tabEntrate, grafico);
         
         Scene scene = new Scene(grp, 600, 600);
         mainStage = primaryStage;
@@ -152,6 +157,7 @@ public class GestioneMonetariaFinestra extends Application {
         
         db = new OperazioniDatabaseGuadagniSpese("jdbc:mysql://localhost:3306/gestionemonetaria", "root","");
         tabEntrate.aggiornaListaGuadagniSpese(db.ottieniGuadagniSpese());
+        grafico.popolaGrafico(db.ottieniGuadagniSpese());
 
         primaryStage.show();
     }

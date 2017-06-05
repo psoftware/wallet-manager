@@ -29,6 +29,12 @@ Classe ConfigurazioneXML:
 Classe FileGuadagniSpeseXML:
 - ho aggiunto il membro statico percorsoFileXSD
 
+Classe GraficoStatisticheMonetarie:
+- aggiungere associazione tratteggiata a GuadagnoSpesa
+- aggiunta seriePuntiNeg e rinominata seriePunti in seriePuntiPos
+- nel documento di progetto va detto che il Grafico ha due linee, una per le entrate e l'altra per le uscite
+- FAREEEEEEEE -> Non ho gestito la funzionalità della visualizzazione settimanale/mensile, dovrei aggiungere un metodo
+
 Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
 - l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi
@@ -37,5 +43,5 @@ Cose non risolte (CHIEDERE A CIMINO):
 - il metodo start di GestioneMonetariaFinestra è troppo grande ma non si può scomporre
 - per le ComboBox devo mantenere per forza l'indice della voce selezionata e non il testo
 - In GuadagnoSpesa dovrei usare le date
-- Errori XML risolti ma restano problemi con gli attributi (mi serve aiuto)
 - Come gestire il discorso date? Sul db e la cache le tengo come date, nel bean e nell'xml come testo
+- Come gestire il ritorno alla fase di analisi per reiniziare il ciclo (sul registro, intendo)
