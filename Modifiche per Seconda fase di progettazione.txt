@@ -8,6 +8,7 @@ Classe Finestra
 - mancano tutte le label nella sezione di inserimento voci
 - aggiungere dipendenza a GuadagnoSpesa (per l'inserimento)
 - scompattato il main in più funzioni imposta* da aggiungere all'UML
+- aggiunti altri metodi
 
 ci vorrebbe un metodo dal database per ottenere il saldo totale
 
@@ -51,6 +52,7 @@ Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
 - l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi
 - MOLTI PARAMETRI DELLA CONFIGURAZIONE NON SONO USATI!
+- SE AGGIUNGO UN ELEMENTO DOPO AVER FATTO LA RICERCA, LE ENTRATE SONO AGGIORNATE SENZA PARAMETRI
 
 Cose non risolte (CHIEDERE A CIMINO):
 - il metodo start di GestioneMonetariaFinestra è troppo grande ma non si può scomporre

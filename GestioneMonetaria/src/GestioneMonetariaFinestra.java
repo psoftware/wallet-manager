@@ -10,6 +10,7 @@ import javafx.collections.*;
 import javafx.event.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.paint.*;
 import javafx.scene.text.*;
 import javafx.stage.*;
 import javafx.stage.FileChooser.*;
@@ -71,6 +72,7 @@ public class GestioneMonetariaFinestra extends Application {
             comboPeriodoGrafico, tabEntrate, grafico);
         
         Scene scene = new Scene(grp, 660, 600);
+        scene.setFill(Color.ALICEBLUE);
         mainStage = primaryStage;
         primaryStage.setTitle("Gestione Monetaria");
         primaryStage.setScene(scene);
@@ -88,6 +90,7 @@ public class GestioneMonetariaFinestra extends Application {
         lblTitoloInserimentoVoce.setLayoutX(10); lblTitoloInserimentoVoce.setLayoutY(5);
         lblTitoloInserimentoVoce.setFont(new Font(20));
         lblTitoloInserimentoVoce.setText("Inserimento Voce");
+        lblTitoloInserimentoVoce.setTextFill(Color.ROYALBLUE);
         
         pickerDataInserimento = new DatePicker();
         pickerDataInserimento.setLayoutX(10); pickerDataInserimento.setLayoutY(40);
@@ -135,6 +138,7 @@ public class GestioneMonetariaFinestra extends Application {
         lblTitoloImportaVoci.setLayoutX(10); lblTitoloImportaVoci.setLayoutY(250);
         lblTitoloImportaVoci.setFont(new Font(20));
         lblTitoloImportaVoci.setText("Importa voci (File XML)");
+        lblTitoloImportaVoci.setTextFill(Color.ROYALBLUE);
         
         tboxFilePicker = new TextField();
         tboxFilePicker.setLayoutX(15); tboxFilePicker.setLayoutY(290);
@@ -154,6 +158,7 @@ public class GestioneMonetariaFinestra extends Application {
         lblTitoloFiltro.setLayoutX(300); lblTitoloFiltro.setLayoutY(5);
         lblTitoloFiltro.setFont(new Font(20));
         lblTitoloFiltro.setText("Visualizza Entrate");
+        lblTitoloFiltro.setTextFill(Color.ROYALBLUE);
         
         pickerDataInizioFiltro = new DatePicker();
         pickerDataInizioFiltro.setLayoutX(300); pickerDataInizioFiltro.setLayoutY(40);
@@ -182,7 +187,7 @@ public class GestioneMonetariaFinestra extends Application {
         btnCerca.setText("Cerca");
         
         tabEntrate = new TabellaVisualeGuadagniSpese();
-        tabEntrate.setLayoutX(300); tabEntrate.setLayoutY(100);
+        tabEntrate.setLayoutX(300); tabEntrate.setLayoutY(105);
         tabEntrate.setPrefSize(350, 200);
         
         lblSaldoTotale = new Label("Saldo Totale: ?");
@@ -252,7 +257,7 @@ public class GestioneMonetariaFinestra extends Application {
             public void handle(ActionEvent event) {
                 log.invia("Click", "btnImporta");
                 String fileToImport = tboxFilePicker.getText();
-                if(fileToImport == null || fileToImport  == "")
+                if(fileToImport == null || fileToImport.equals(""))
                     return;
 
                 FileGuadagniSpeseXML filelista = new FileGuadagniSpeseXML(fileToImport);
@@ -305,6 +310,11 @@ public class GestioneMonetariaFinestra extends Application {
         
         int saldo = db.ottieniSaldo();
         lblSaldoTotale.setText("Saldo Totale: " + saldo + " " + conf.tipoMoneta);
+        if(saldo <= conf.limiteSpendibili)
+            lblSaldoTotale.setTextFill(Color.RED);
+        else
+            lblSaldoTotale.setTextFill(Color.GREEN);
+            
     }
 
     /**
