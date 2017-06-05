@@ -35,7 +35,8 @@ Classe GraficoStatisticheMonetarie:
 - aggiungere associazione tratteggiata a GuadagnoSpesa
 - aggiunta seriePuntiNeg e rinominata seriePunti in seriePuntiPos
 - nel documento di progetto va detto che il Grafico ha due linee, una per le entrate e l'altra per le uscite
-- FAREEEEEEEE -> Non ho gestito la funzionalità della visualizzazione settimanale/mensile, dovrei aggiungere un metodo
+- il metodo popola ha il parametro index per la visuale
+- LE DATE NON SONO ORDINATE, E' UN BUG DI JAVA
 
 Classe OperazioniDatabaseGuadagniSpese:
 - cambiati un po' di metodi, applicare tutto

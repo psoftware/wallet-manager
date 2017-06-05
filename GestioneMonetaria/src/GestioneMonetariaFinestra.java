@@ -4,17 +4,15 @@
  * and open the template in the editor.
  */
 import java.io.*;
-import java.time.LocalDate;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
+import java.util.*;
+import javafx.application.*;
+import javafx.collections.*;
 import javafx.event.*;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.text.*;
 import javafx.stage.*;
-
-import javafx.scene.Group;
-
-import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.FileChooser.*;
 
 /**
  *
@@ -23,6 +21,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class GestioneMonetariaFinestra extends Application {
     private Stage mainStage;
     
+    public Label lblTitoloInserimentoVoce;
     public DatePicker pickerDataInserimento;
     public TextField tboxDescrizione;
     public TextField tboxImporto;
@@ -31,10 +30,12 @@ public class GestioneMonetariaFinestra extends Application {
     public RadioButton radiobtnAddebito;
     public Button btnImporta;
     
+    public Label lblTitoloImportaVoci;
     public TextField tboxFilePicker;
     public Button btnCarica;
     public Button btnInserisci;
     
+    public Label lblTitoloFiltro;
     public DatePicker pickerDataInizioFiltro;
     public DatePicker pickerDataFineFiltro;
     public ComboBox comboCategoriaFiltro;
@@ -62,19 +63,19 @@ public class GestioneMonetariaFinestra extends Application {
         impostaLayoutImportaVoci();
         impostaLayoutRicerca();
         impostaLayoutGraficoStatistiche();
-        impostaHandler();
         
-        Group grp = new Group(pickerDataInserimento, tboxDescrizione, tboxImporto,
-            comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, btnInserisci, tboxFilePicker,
-            btnCarica, btnImporta, pickerDataInizioFiltro, pickerDataFineFiltro,
+        Group grp = new Group(lblTitoloInserimentoVoce, pickerDataInserimento, tboxDescrizione, tboxImporto,
+            comboCategoriaInserimento, radiobtnAccredito, radiobtnAddebito, btnInserisci, lblTitoloImportaVoci,
+            tboxFilePicker, btnCarica, btnImporta, lblTitoloFiltro, pickerDataInizioFiltro, pickerDataFineFiltro,
             comboCategoriaFiltro, tboxDescrParziale, btnCerca, lblSaldoTotale,
             comboPeriodoGrafico, tabEntrate, grafico);
         
-        Scene scene = new Scene(grp, 600, 600);
+        Scene scene = new Scene(grp, 660, 600);
         mainStage = primaryStage;
         primaryStage.setTitle("Gestione Monetaria");
         primaryStage.setScene(scene);
 
+        impostaHandler();
         CacheGestioneMonetaria.caricaDaFile(this);
         aggiornaStatoFinanziario();
 
@@ -83,28 +84,41 @@ public class GestioneMonetariaFinestra extends Application {
     }
     
     private void impostaLayoutInserimentoVoce() {
+        lblTitoloInserimentoVoce = new Label();
+        lblTitoloInserimentoVoce.setLayoutX(10); lblTitoloInserimentoVoce.setLayoutY(5);
+        lblTitoloInserimentoVoce.setFont(new Font(20));
+        lblTitoloInserimentoVoce.setText("Inserimento Voce");
+        
         pickerDataInserimento = new DatePicker();
-        pickerDataInserimento.setLayoutX(10); pickerDataInserimento.setLayoutY(10);
+        pickerDataInserimento.setLayoutX(10); pickerDataInserimento.setLayoutY(40);
+        pickerDataInserimento.setPrefWidth(110);
+        pickerDataInserimento.promptTextProperty().setValue("Data Voce");
+        pickerDataInserimento.setPrefWidth(200);
         
         tboxDescrizione = new TextField();
-        tboxDescrizione.setLayoutX(10); tboxDescrizione.setLayoutY(40);
+        tboxDescrizione.setLayoutX(10); tboxDescrizione.setLayoutY(70);
+        tboxDescrizione.promptTextProperty().setValue("Descrizione");
+        tboxDescrizione.setPrefWidth(200);
         
         tboxImporto = new TextField();
-        tboxImporto.setLayoutX(10); tboxImporto.setLayoutY(70);
+        tboxImporto.setLayoutX(10); tboxImporto.setLayoutY(100);
+        tboxImporto.promptTextProperty().setValue("Importo");
+        tboxImporto.setPrefWidth(200);
         
         comboCategoriaInserimento =
                 new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
         comboCategoriaInserimento.getSelectionModel().select(0);
-        comboCategoriaInserimento.setLayoutX(10); comboCategoriaInserimento.setLayoutY(100);
+        comboCategoriaInserimento.setLayoutX(10); comboCategoriaInserimento.setLayoutY(130);
+        comboCategoriaInserimento.setPrefWidth(200);
         
         // il toggle group mi serve per associare i due RadioButton
         ToggleGroup tg = new ToggleGroup();
         radiobtnAccredito = new RadioButton();
-        radiobtnAccredito.setLayoutX(10); radiobtnAccredito.setLayoutY(130);
+        radiobtnAccredito.setLayoutX(40); radiobtnAccredito.setLayoutY(170);
         radiobtnAccredito.setText("Accredito");
         
         radiobtnAddebito = new RadioButton();
-        radiobtnAddebito.setLayoutX(90); radiobtnAddebito.setLayoutY(130);
+        radiobtnAddebito.setLayoutX(125); radiobtnAddebito.setLayoutY(170);
         radiobtnAddebito.setText("Addebito");
         
         radiobtnAccredito.setToggleGroup(tg);
@@ -112,56 +126,92 @@ public class GestioneMonetariaFinestra extends Application {
         radiobtnAccredito.setSelected(true);
         
         btnInserisci = new Button();
-        btnInserisci.setLayoutX(10); btnInserisci.setLayoutY(150);
+        btnInserisci.setLayoutX(85); btnInserisci.setLayoutY(200);
         btnInserisci.setText("Inserisci");
     }
     
     private void impostaLayoutImportaVoci() {
+        lblTitoloImportaVoci = new Label();
+        lblTitoloImportaVoci.setLayoutX(10); lblTitoloImportaVoci.setLayoutY(250);
+        lblTitoloImportaVoci.setFont(new Font(20));
+        lblTitoloImportaVoci.setText("Importa voci (File XML)");
+        
         tboxFilePicker = new TextField();
-        tboxFilePicker.setLayoutX(10); tboxFilePicker.setLayoutY(190);
+        tboxFilePicker.setLayoutX(15); tboxFilePicker.setLayoutY(290);
+        tboxFilePicker.promptTextProperty().setValue("Percorso file XML");
 
         btnCarica = new Button();
-        btnCarica.setLayoutX(100); btnCarica.setLayoutY(200);
+        btnCarica.setLayoutX(170); btnCarica.setLayoutY(290);
         btnCarica.setText("Carica");
 
         btnImporta = new Button();
-        btnImporta.setLayoutX(40); btnImporta.setLayoutY(230);
+        btnImporta.setLayoutX(85); btnImporta.setLayoutY(320);
         btnImporta.setText("Importa");
     }
     
     private void impostaLayoutRicerca() {
+        lblTitoloFiltro = new Label();
+        lblTitoloFiltro.setLayoutX(300); lblTitoloFiltro.setLayoutY(5);
+        lblTitoloFiltro.setFont(new Font(20));
+        lblTitoloFiltro.setText("Visualizza Entrate");
+        
         pickerDataInizioFiltro = new DatePicker();
-        pickerDataInizioFiltro.setLayoutX(200); pickerDataInizioFiltro.setLayoutY(10);
+        pickerDataInizioFiltro.setLayoutX(300); pickerDataInizioFiltro.setLayoutY(40);
+        pickerDataInizioFiltro.setPrefWidth(110);
+        pickerDataInizioFiltro.promptTextProperty().setValue("Data Inizio");
         
         pickerDataFineFiltro = new DatePicker();
-        pickerDataFineFiltro.setLayoutX(200); pickerDataFineFiltro.setLayoutY(40);
+        pickerDataFineFiltro.setLayoutX(420); pickerDataFineFiltro.setLayoutY(40);
+        pickerDataFineFiltro.setPrefWidth(110);
+        pickerDataFineFiltro.promptTextProperty().setValue("Data Fine");
         
         comboCategoriaFiltro =
                 new ComboBox(FXCollections.observableArrayList(conf.listaCategorie));
         comboCategoriaFiltro.getSelectionModel().select(0);
-        comboCategoriaFiltro.setLayoutX(200); comboCategoriaFiltro.setLayoutY(70);
+        comboCategoriaFiltro.setLayoutX(540); comboCategoriaFiltro.setLayoutY(40);
+        comboCategoriaFiltro.setPrefWidth(110);
         
         tboxDescrParziale = new TextField();
-        tboxDescrParziale.setLayoutX(200); tboxDescrParziale.setLayoutY(100);
+        tboxDescrParziale.setLayoutX(300); tboxDescrParziale.setLayoutY(70);
+        tboxDescrParziale.setPrefWidth(290);
+        tboxDescrParziale.promptTextProperty().setValue("Descrizione parziale");
         
         btnCerca = new Button();
-        btnCerca.setLayoutX(200); btnCerca.setLayoutY(130);
+        btnCerca.setLayoutX(600); btnCerca.setLayoutY(70);
+        btnCerca.setPrefWidth(50);
         btnCerca.setText("Cerca");
         
         tabEntrate = new TabellaVisualeGuadagniSpese();
-        tabEntrate.setLayoutX(200); tabEntrate.setLayoutY(200);
+        tabEntrate.setLayoutX(300); tabEntrate.setLayoutY(100);
+        tabEntrate.setPrefSize(350, 200);
         
-        lblSaldoTotale = new Label("Saldo Totale");
-        lblSaldoTotale.setLayoutX(200); lblSaldoTotale.setLayoutY(160);
+        lblSaldoTotale = new Label("Saldo Totale: ?");
+        lblSaldoTotale.setLayoutX(380); lblSaldoTotale.setLayoutY(315);
+        lblSaldoTotale.setFont(new Font(20));
     }
     
     private void impostaLayoutGraficoStatistiche() {
-        comboPeriodoGrafico = new ComboBox();
-        comboPeriodoGrafico.setLayoutX(200-10); comboPeriodoGrafico.setLayoutY(400);
+        ArrayList listavisuali = new ArrayList();
+        listavisuali.add("Settimanale");
+        listavisuali.add("Mensile");
+        listavisuali.add("Annuale");
+        
+        int selectedIndex = 0;
+        if(conf.vistaDefaultGrafico.equals("Settimanale"))
+            selectedIndex = 0;
+        else if(conf.vistaDefaultGrafico.equals("Mensile"))
+            selectedIndex = 1;
+        else if(conf.vistaDefaultGrafico.equals("Annuale"))
+            selectedIndex = 2;
+
+        comboPeriodoGrafico = new ComboBox(
+                FXCollections.observableArrayList(listavisuali));
+        comboPeriodoGrafico.setLayoutX(270); comboPeriodoGrafico.setLayoutY(370);
+        comboPeriodoGrafico.getSelectionModel().select(selectedIndex);
         
         grafico = new GraficoStatisticheMonetarie("Statistiche Monetarie");
-        grafico.setLayoutX(10);
-        grafico.setLayoutY(250);
+        grafico.setLayoutX(10); grafico.setLayoutY(400);
+        grafico.setPrefWidth(610); grafico.setPrefHeight(200);
     }
     
     private void impostaHandler() {
@@ -178,8 +228,8 @@ public class GestioneMonetariaFinestra extends Application {
                     importo = importo * -1;
                 GuadagnoSpesa gs = new GuadagnoSpesa(
                         pickerDataInserimento.getValue(),
-                        tboxDescrizione.getText(),
                         comboCategoriaInserimento.getSelectionModel().getSelectedItem().toString(),
+                        tboxDescrizione.getText(),
                         importo);
                 db.aggiungiGuadagnoSpesa(gs);
                 aggiornaStatoFinanziario();
@@ -226,10 +276,12 @@ public class GestioneMonetariaFinestra extends Application {
             }
         });
         
-        comboCategoriaFiltro.setOnAction(new EventHandler<ActionEvent>() {
+        comboPeriodoGrafico.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 log.invia("Click", "comboCategoriaFiltro");
+                grafico.popolaGrafico(db.ottieniGuadagniSpese(),
+                        comboPeriodoGrafico.getSelectionModel().getSelectedIndex());
             }
         });
     }
@@ -246,10 +298,11 @@ public class GestioneMonetariaFinestra extends Application {
     private void aggiornaStatoFinanziario()
     {
         tabEntrate.aggiornaListaGuadagniSpese(db.ottieniGuadagniSpese());
-        grafico.popolaGrafico(db.ottieniGuadagniSpese());
+        grafico.popolaGrafico(db.ottieniGuadagniSpese(),
+                comboPeriodoGrafico.getSelectionModel().getSelectedIndex());
         
         int saldo = db.ottieniSaldo();
-        lblSaldoTotale.setText("Saldo Totale: " + saldo);
+        lblSaldoTotale.setText("Saldo Totale: " + saldo + " " + conf.tipoMoneta);
     }
 
     /**
