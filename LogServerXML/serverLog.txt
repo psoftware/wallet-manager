@@ -2630,3 +2630,10 @@
   <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
 </ElementoLog>
 
+<ElementoLog>
+  <indirizzoIP>127.0.0.1</indirizzoIP>
+  <dataOra>Tue Jun 06 00:43:42 CEST 2017</dataOra>
+  <nomeEvento>Avvio</nomeEvento>
+  <oggettoCoinvolto>Applicazione</oggettoCoinvolto>
+</ElementoLog>
+
