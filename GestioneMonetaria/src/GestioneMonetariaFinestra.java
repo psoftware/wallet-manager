@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 import java.io.*;
+import java.time.LocalDate;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.*;
@@ -173,11 +174,12 @@ public class GestioneMonetariaFinestra extends Application {
                 int importo = Integer.parseInt(tboxImporto.getText());
                 if(radiobtnAddebito.isSelected())
                     importo = importo * -1;
-                db.aggiungiGuadagnoSpesa(
-                        pickerDataInserimento.getValue().toString(),
+                GuadagnoSpesa gs = new GuadagnoSpesa(
+                        pickerDataInserimento.getValue(),
                         tboxDescrizione.getText(),
                         comboCategoriaInserimento.getSelectionModel().getSelectedItem().toString(),
                         importo);
+                db.aggiungiGuadagnoSpesa(gs);
             }
         });
         

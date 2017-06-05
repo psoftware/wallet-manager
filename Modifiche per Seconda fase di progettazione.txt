@@ -6,6 +6,7 @@ Classe Finestra
 - cambiare tipi TextBox in TextField
 - aggiunto parametro al metodo apriDialogSelezioneFile(Stage stage)
 - mancano tutte le label nella sezione di inserimento voci
+- aggiungere dipendenza a GuadagnoSpesa (per l'inserimento)
 
 ci vorrebbe un metodo dal database per ottenere il saldo totale
 
@@ -35,12 +36,15 @@ Classe GraficoStatisticheMonetarie:
 - nel documento di progetto va detto che il Grafico ha due linee, una per le entrate e l'altra per le uscite
 - FAREEEEEEEE -> Non ho gestito la funzionalità della visualizzazione settimanale/mensile, dovrei aggiungere un metodo
 
+Classe OperazioniDatabaseGuadagniSpese:
+- cambiati un po' di metodi, applicare tutto
+
 AGGIUNTA CLASSE GuadagnoSpesa e rinominata quella vecchia in GuadagnoSpesaBean per colpa della data
-CONVERTITI TUTTI I TIPI LocalDate IN Date
 
 Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
 - l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi
+- MOLTI PARAMETRI DELLA CONFIGURAZIONE NON SONO USATI!
 
 Cose non risolte (CHIEDERE A CIMINO):
 - il metodo start di GestioneMonetariaFinestra è troppo grande ma non si può scomporre

@@ -20,14 +20,20 @@ public class OperazioniDatabaseGuadagniSpese {
         }
     }
     
-    public void aggiungiGuadagnoSpesa(String data, String descrizione, String categoria, int importo) {
+    public void aggiungiGuadagnoSpesa(GuadagnoSpesa gs) {
         try (PreparedStatement ps = co.prepareStatement("INSERT INTO guadagnispese VALUES (?, ?, ?, ?)");) { 
-              ps.setDate(1, java.sql.Date.valueOf(data));
-              ps.setString(2, categoria);
-              ps.setString(3, descrizione);
-              ps.setInt(4, importo);
+              ps.setDate(1, java.sql.Date.valueOf(gs.data));
+              ps.setString(2, gs.categoria);
+              ps.setString(3, gs.descrizione);
+              ps.setInt(4, gs.importo);
               ps.executeUpdate();
         } catch (SQLException e) {System.err.println(e.getMessage());}     
+    }
+    
+    public void aggiungiListaGuadagnoSpesa(List<GuadagnoSpesa> lista)
+    {
+        for(GuadagnoSpesa gs: lista)
+            aggiungiGuadagnoSpesa(gs);
     }
     
     public ArrayList<GuadagnoSpesa> ottieniGuadagniSpese() {
@@ -35,7 +41,7 @@ public class OperazioniDatabaseGuadagniSpese {
         try (Statement st = co.createStatement()) { 
               ResultSet rs = st.executeQuery("SELECT * FROM guadagnispese");  
               while (rs.next())
-                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento"),
+                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento").toLocalDate(),
                                                 rs.getString("categoria"),
                                                 rs.getString("descrizione"),
                                                 rs.getInt("importo")));
@@ -58,7 +64,7 @@ public class OperazioniDatabaseGuadagniSpese {
               ResultSet rs = ps.executeQuery();
               
               while (rs.next()) //12
-                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento"),
+                risultato.add(new GuadagnoSpesa(rs.getDate("datariferimento").toLocalDate(),
                                                 rs.getString("categoria"),
                                                 rs.getString("descrizione"),
                                                 rs.getInt("importo")));
