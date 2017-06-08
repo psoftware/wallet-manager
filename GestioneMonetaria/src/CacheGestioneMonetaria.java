@@ -48,6 +48,9 @@ public class CacheGestioneMonetaria implements Serializable {
     public static void caricaDaFile(GestioneMonetariaFinestra finestra) {
         CacheGestioneMonetaria cache = caricaBin();
         
+        if(cache == null)
+            return;
+        
         // sezione inserimento voce
         finestra.pickerDataInserimento.setValue(cache.dataInserimentoVoce);
         finestra.tboxDescrizione.setText(cache.descrizioneInserimentoVoce);

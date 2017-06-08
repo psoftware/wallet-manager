@@ -10,8 +10,6 @@ Classe Finestra
 - scompattato il main in più funzioni imposta* da aggiungere all'UML
 - aggiunti altri metodi
 
-ci vorrebbe un metodo dal database per ottenere il saldo totale
-
 Classe Cache:
 - Modificare membri dato (uso delle LocalDate, del termine InserimentoVoce e degli index per combobox)
 public LocalDate dataInserimentoVoce;
@@ -50,8 +48,6 @@ AGGIUNTA CLASSE LocalDateConverter PROTOTIPANDO XStream
 
 Altro:
 - Indicare che GuadagnoSpesa è una classe bean e ha membri di tipo Simple*Property
-- l'elemento TabellaVisualeGuadagniSpese nell'UML è ristretta e non copre, in parte, i vari metodi
-- MOLTI PARAMETRI DELLA CONFIGURAZIONE NON SONO USATI!
 - SE AGGIUNGO UN ELEMENTO DOPO AVER FATTO LA RICERCA, LE ENTRATE SONO AGGIORNATE SENZA PARAMETRI
 
 Cose non risolte (CHIEDERE A CIMINO):
