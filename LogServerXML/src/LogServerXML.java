@@ -16,17 +16,14 @@ public class LogServerXML {
         {
             while(true){
                 Socket so = sv.accept();
+                
+                // ottengo la stringa XML dal socket
                 DataInputStream dis = new DataInputStream(so.getInputStream());
                 String risultato = dis.readUTF();
                 System.out.println(risultato); 
-
-                // salvo contenuto ricevuto in un file
-                FileWriter tempfw = new FileWriter("./ricevuto.xml", false);
-                tempfw.write(risultato);
-                tempfw.close();
                 
-                // valido il file
-                if(!ValidatoreXML.valida("./ricevuto.xml", "./ElementoLog.xsd"))
+                // valido la stringa ricevuta
+                if(!ValidatoreXML.validaStringa(risultato, "./ElementoLog.xsd"))
                 {
                     System.out.println("L'elemeno XML ricevuto non è valido");
                     continue;

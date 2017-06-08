@@ -23,7 +23,7 @@ public class FileGuadagniSpeseXML {
     public ArrayList<GuadagnoSpesa> caricaEntrate(){
         try {
             //validiamo il file
-            if(!ValidatoreXML.valida(filename, percorsoFileXSD))
+            if(!ValidatoreXML.validaFile(filename, percorsoFileXSD))
                 return null;
             
             //carichiamo il file

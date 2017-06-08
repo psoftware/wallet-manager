@@ -12,5 +12,8 @@ Risposte:
 - nel grafico mettere modalità Mensile, Semestrale o Annuale e sull'asse inserire
   il numero della settimana (dall'inizio dell'anno)
 - il numero di settimana va messo in colonna oppure fatto con GROUP BY
+- a ValidatoreXML va aggiunto un metodo per validare una stringa (FATTO)
 
 - documentazione va fatta nel collaudo
+
+Ricevimento extra 40 ore: le fasi indicate nell'attività sono quelle di cui si è discusso nel ricevimento. Abbiamo deciso che va bene utilizzare i tipi LocalDate per gestire le date e usare la classe LocalDateConverter per XStream. Abbiamo deciso che il grafico debba avere 3 modalità: Mensile, Semestrale e Annuale. Sulla barra delle ascisse vanno messi i numeri delle settimane relative alle entrate (vanno sommate quelle della stessa settimana). Inoltre ValidatoreXML deve validare anche stringhe.

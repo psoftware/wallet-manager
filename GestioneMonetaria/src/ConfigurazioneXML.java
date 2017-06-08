@@ -24,7 +24,7 @@ public class ConfigurazioneXML {
     public static ConfigurazioneXML caricaDaFile() {
         try {
             //validiamo il file
-            if(!ValidatoreXML.valida(percorsoFileXML, percorsoFileXSD))
+            if(!ValidatoreXML.validaFile(percorsoFileXML, percorsoFileXSD))
                 return null;
             
             //carichiamo il file
