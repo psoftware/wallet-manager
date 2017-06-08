@@ -298,7 +298,10 @@ public class GestioneMonetariaFinestra extends Application {
         fileChooser.getExtensionFilters().addAll(
                 new ExtensionFilter("File di GuadagniSpese XML", "*.xml"));
         File selectedFile = fileChooser.showOpenDialog(stage);
-        return selectedFile.getAbsolutePath();
+        if(selectedFile == null)
+            return null;
+        else
+            return selectedFile.getAbsolutePath();
     }
     
     private void aggiornaStatoFinanziario()
