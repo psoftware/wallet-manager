@@ -1,0 +1,16 @@
+Domande:
+- problema LocalDate
+- problema converter per XStream
+- validazione xml per log (metto su file)
+- dimensione dei metodi
+- revisione registro
+- problema ordinamento grafico
+
+Risposte:
+- ordinare in modo decrescente le voci della tabella
+- mettere la linea delle uscite nel quadrante positivo (FATTO)
+- nel grafico mettere modalità Mensile, Semestrale o Annuale e sull'asse inserire
+  il numero della settimana (dall'inizio dell'anno)
+- il numero di settimana va messo in colonna oppure fatto con GROUP BY
+
+- documentazione va fatta nel collaudo
