@@ -48,7 +48,7 @@ public class CacheGestioneMonetaria implements Serializable {
     public static void caricaDaFile(GestioneMonetariaFinestra finestra) {
         CacheGestioneMonetaria cache = caricaBin();
         
-        if(cache == null)
+        if(cache == null)   //(02)
             return;
         
         // sezione inserimento voce
@@ -95,3 +95,7 @@ public class CacheGestioneMonetaria implements Serializable {
 //      mantenere in cache lo stato di entrambi. Basta sapere se uno dei due è
 //      selezionato e lo stato dell'altro button è deducibile dal primo.
 //      Quindi, in questo caso, salvo solo lo stato di radiobtnAccredito
+// (02) Non è detto che il file di cache sia già stato generato, per questo
+//      motivo devo evitare di accedere ai membri dell'istanza CacheGestioneMonetaria
+//      perchè sono tutti non inizializzati. La funzione salvaSuFile(), tramite la
+//      salvaBin(), provvederà successivamente a creare il nuovo file
