@@ -52,10 +52,12 @@ public class GraficoStatisticheMonetarie extends LineChart {
                         listaEntrate.get(i).importo));
             else
                 seriePuntiNeg.getData().add(new XYChart.Data<>(listaEntrate.get(i).data.toString(),
-                        listaEntrate.get(i).importo));
+                        listaEntrate.get(i).importo * -1)); //(02)
         }
     } 
 }
 
 // (01) Devo controllare che ogni entrata non stia fuori dai margini del tipo di
 //      visuale (giornaliera, mensile o settimanale)
+// (02) Gli importi negativi vengono comunque riportati nel quadrante positivo,
+//      come da requisiti
