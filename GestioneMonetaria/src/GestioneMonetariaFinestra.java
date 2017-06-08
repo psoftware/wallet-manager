@@ -197,16 +197,16 @@ public class GestioneMonetariaFinestra extends Application {
     
     private void impostaLayoutGraficoStatistiche() {
         ArrayList listavisuali = new ArrayList();
-        listavisuali.add("Settimanale");
         listavisuali.add("Mensile");
+        listavisuali.add("Semestrale");
         listavisuali.add("Annuale");
         
         int selectedIndex = 0;
-        if(conf.vistaDefaultGrafico.equals("Settimanale"))
+        if(conf.vistaDefaultGrafico.equals("Mensile"))          //(01)
             selectedIndex = 0;
-        else if(conf.vistaDefaultGrafico.equals("Mensile"))
+        else if(conf.vistaDefaultGrafico.equals("Semestrale"))  //(01)
             selectedIndex = 1;
-        else if(conf.vistaDefaultGrafico.equals("Annuale"))
+        else if(conf.vistaDefaultGrafico.equals("Annuale"))     //(01)
             selectedIndex = 2;
 
         comboPeriodoGrafico = new ComboBox(
@@ -328,3 +328,7 @@ public class GestioneMonetariaFinestra extends Application {
     }
     
 }
+
+// (01) la configurazione mi fornisce la voce di default della combobox in formato
+//      testuale, quindi la devo convertire in index per il metodo che aggiorna il
+//      grafico

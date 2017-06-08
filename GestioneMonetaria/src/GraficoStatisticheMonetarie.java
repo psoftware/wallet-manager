@@ -33,11 +33,11 @@ public class GraficoStatisticheMonetarie extends LineChart {
         seriePuntiNeg.getData().clear();
         
         LocalDate inizioPeriodo;
-        if(indexTemporale == 0)
-            inizioPeriodo = LocalDate.now().plusDays(-7);
-        else if(indexTemporale == 1)
+        if(indexTemporale == 0)         // Mensile
             inizioPeriodo = LocalDate.now().plusMonths(-1);
-        else if(indexTemporale == 2)
+        else if(indexTemporale == 1)    // Semestrale
+            inizioPeriodo = LocalDate.now().plusMonths(-6);
+        else if(indexTemporale == 2)    // Annuale
             inizioPeriodo = LocalDate.now().plusYears(-1);
         else
             return;
@@ -58,6 +58,6 @@ public class GraficoStatisticheMonetarie extends LineChart {
 }
 
 // (01) Devo controllare che ogni entrata non stia fuori dai margini del tipo di
-//      visuale (giornaliera, mensile o settimanale)
+//      visuale (mensile, semestrale o annuale)
 // (02) Gli importi negativi vengono comunque riportati nel quadrante positivo,
 //      come da requisiti
