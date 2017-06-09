@@ -1,5 +1,6 @@
 import java.util.*;
 import java.sql.*;
+import java.time.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -87,4 +88,32 @@ public class OperazioniDatabaseGuadagniSpese {
               return risultato;
         } catch (SQLException e) {System.err.println(e.getMessage()); return null;}
     }
+    
+    public ArrayList<GuadagnoSpesaSettimanale> ottieniGuadagniSpeseSettimanali() {
+        ArrayList risultato = new ArrayList<>();
+        try (PreparedStatement ps = co.prepareStatement(
+                "SELECT WEEK(datariferimento) AS settimana, SUM(importo) AS sommaimporti " +
+                "FROM guadagnispese " +
+                "WHERE importo > 0 " +
+                "AND YEAR(datariferimento)=YEAR(NOW()) " +
+                "GROUP BY WEEK(datariferimento) " +
+                "UNION ALL " +
+                "SELECT WEEK(datariferimento) AS settimana, SUM(importo) AS sommaimporti " +
+                "FROM guadagnispese " +
+                "WHERE importo < 0 " +
+                "AND YEAR(datariferimento)=YEAR(NOW()) " +
+                "GROUP BY WEEK(datariferimento)")) //(02)
+        {
+              ResultSet rs = ps.executeQuery();  
+              while (rs.next())
+                risultato.add(new GuadagnoSpesaSettimanale(rs.getInt("settimana"),
+                                                rs.getInt("sommaimporti")));    //(01)
+              return risultato;
+        } catch (SQLException e) {System.err.println(e.getMessage()); return null;}
+    }
 }
+
+// (01) Mi serve un'altra (semplice) classe per restituire il particolare risultato
+//      restituito dalla ottieniGuadagniSpeseSettimanali.
+// (02) La query mi restituisce i risultati solo relativi all'anno corrente in modo
+//      tale che il numero della settimana possa essere una chiave
