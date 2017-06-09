@@ -222,7 +222,8 @@ public class GestioneMonetariaFinestra extends Application {
     private void impostaHandler() {
         GestioneMonetariaFinestra istanzaglobale = this;
         mainStage.setOnCloseRequest((WindowEvent we) ->
-            { CacheGestioneMonetaria.salvaSuFile(istanzaglobale); });
+            {   log.invia("Chiusura", "Applicazione");
+                CacheGestioneMonetaria.salvaSuFile(istanzaglobale); });
 
         btnInserisci.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -285,10 +286,32 @@ public class GestioneMonetariaFinestra extends Application {
         comboPeriodoGrafico.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                log.invia("Click", "comboCategoriaFiltro");
+                log.invia("Click", "comboPeriodoGrafico");
                 grafico.popolaGrafico(db.ottieniGuadagniSpeseSettimanali(),
                     comboPeriodoGrafico.getSelectionModel().getSelectedIndex());
             }
+        });
+        
+        comboCategoriaInserimento.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                log.invia("Click", "comboCategoriaInserimento");
+            }
+        });
+        
+        comboCategoriaFiltro.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                log.invia("Click", "comboCategoriaFiltro");
+            }
+        });
+                
+        radiobtnAccredito.setOnAction((ActionEvent event) -> {
+            log.invia("Click", "radiobtnAccredito");
+        });
+        
+        radiobtnAddebito.setOnAction((ActionEvent event) -> {
+            log.invia("Click", "radiobtnAddebito");
         });
     }
     
