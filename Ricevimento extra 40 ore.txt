@@ -7,11 +7,11 @@ Domande:
 - problema ordinamento grafico
 
 Risposte:
-- ordinare in modo decrescente le voci della tabella
+- ordinare in modo decrescente le voci della tabella (FATTO)
 - mettere la linea delle uscite nel quadrante positivo (FATTO)
 - nel grafico mettere modalità Mensile, Semestrale o Annuale e sull'asse inserire
-  il numero della settimana (dall'inizio dell'anno)
-- il numero di settimana va messo in colonna oppure fatto con GROUP BY
+  il numero della settimana (dall'inizio dell'anno) (FATTO)
+- il numero di settimana va messo in colonna oppure fatto con GROUP BY (FATTO)
 - a ValidatoreXML va aggiunto un metodo per validare una stringa (FATTO)
 
 - documentazione va fatta nel collaudo
