@@ -43,7 +43,7 @@ public class GraficoStatisticheMonetarie extends LineChart {
         seriePuntiPos.getData().clear();
         seriePuntiNeg.getData().clear();
         
-        //int indexCategoriaFiltro = comboPeriodoGrafico.getSelectionModel().getSelectedIndex();
+        // va calcolata la data iniziale in base alla visuale scelta
         LocalDate inizioPeriodo;
         if(sceltaVisuale == 0)         // Mensile
             inizioPeriodo = LocalDate.now().plusMonths(-1);
@@ -54,6 +54,7 @@ public class GraficoStatisticheMonetarie extends LineChart {
         else
             return;
         
+        // il periodo finale fa sempre riferimento alla data corrente
         LocalDate finePeriodo = LocalDate.now();
         if(inizioPeriodo.getYear() != finePeriodo.getYear())
             inizioPeriodo = LocalDate.of(finePeriodo.getYear(), 1, 2);// (05)
@@ -66,7 +67,7 @@ public class GraficoStatisticheMonetarie extends LineChart {
 
         for(GuadagnoSpesaSettimanale gsset : listaEntrateSett)
             if(gsset.settimana >= inizioWeekday && gsset.settimana <= fineWeekday)  // (04)
-            {
+            {   // distribuisco i due punti sulle due serie in base alla positività/negatività
                 if(gsset.sommaimporti > 0)
                     seriePuntiPos.getData().add(new XYChart.Data<>(gsset.settimana,
                             gsset.sommaimporti));

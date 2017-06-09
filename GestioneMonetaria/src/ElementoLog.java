@@ -11,14 +11,17 @@ import java.io.*;
  */
 public class ElementoLog implements Serializable {
     public String indirizzoIP;
-    public String dataOra;
+    public String dataOra;      // (01)
     public String nomeEvento;
     public String oggettoCoinvolto;
 
     public ElementoLog(String indirizzoIP, String dataOra, String nomeEvento, String oggettoCoinvolto) {
         this.indirizzoIP = indirizzoIP;
-        this.dataOra = dataOra;
+        this.dataOra = dataOra;            // (01)
         this.nomeEvento = nomeEvento;
         this.oggettoCoinvolto = oggettoCoinvolto;
     }
 }
+
+// (01) La dataOra è restituita in formato universale attraverso una stringa
+//      (esempio: Thu Jun 08 19:26:18 CEST 2017)

@@ -10,7 +10,7 @@ import javafx.beans.property.*;
  * @author Antonio Le Caldare
  */
 public class GuadagnoSpesaBean {
-    private SimpleStringProperty data;
+    private SimpleStringProperty data;      // (01)
     private SimpleStringProperty categoria;
     private SimpleStringProperty descrizione;
     private SimpleIntegerProperty importo;
@@ -35,3 +35,6 @@ public class GuadagnoSpesaBean {
         return importo.getValue();
     }
 }
+
+// (01) La data è rappresentata come stringa per comodità, in quanto questo bean
+//      è solamente utilizzato per costruire la tabella dell'interfaccia.

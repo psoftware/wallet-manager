@@ -9,7 +9,7 @@ import java.time.*;
  *
  * @author Antonio Le Caldare
  */
-public class LocalDateConverter extends AbstractSingleValueConverter {
+public class LocalDateConverter extends AbstractSingleValueConverter {  // (01)
 
     public boolean canConvert(Class type) {
         return (type != null) && LocalDate.class.getPackage().equals(type.getPackage());
@@ -29,3 +29,6 @@ public class LocalDateConverter extends AbstractSingleValueConverter {
     }
 
 }
+
+// (01) La classe è stata prelevata da:
+//      https://groups.google.com/forum/#!msg/axonframework/TUMYBYBcdMc/mkSASIWtAlYJ

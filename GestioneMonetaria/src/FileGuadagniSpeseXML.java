@@ -48,3 +48,5 @@ public class FileGuadagniSpeseXML {
 //      tipo Date per questioni di integrazione con la classe OperazioniDatabaseGuadagniSpese:
 //      la libreria mysql lavora meglio con i tipi LocalDate. Usare Date porterebbe
 //      ad effettuare cast esplici abbastanza complessi.
+//      Soluzione presa dalla pagina:
+//      https://groups.google.com/forum/#!msg/axonframework/TUMYBYBcdMc/mkSASIWtAlYJ

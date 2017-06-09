@@ -37,8 +37,10 @@ public class ConfigurazioneXML {
 
             //convertiamolo in un'istanza di ConfigurazioneXML e poi restituiamolo
             XStream xs = new XStream();
-            xs.useAttributeFor(ConfigurazioneXML.class, "tipoMoneta");
+            xs.useAttributeFor(ConfigurazioneXML.class, "tipoMoneta");  // (01)
             ConfigurazioneXML risultato = (ConfigurazioneXML)xs.fromXML(filestring);
+            
+            //stampiamo a schermo il risultato e restituiamolo
             System.out.println(risultato.tipoMoneta);
             return risultato;
         } catch (IOException ex) {
@@ -47,3 +49,6 @@ public class ConfigurazioneXML {
         }
     }
 }
+
+// (01) Si fa riferimento agli esempi del laboratorio di Programmazione. Il metodo
+//      indicato serve per specificare che tipoMoneta è un attributo nel file XML.
