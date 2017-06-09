@@ -57,8 +57,9 @@ public class GestioneMonetariaFinestra extends Application {
     @Override
     public void start(Stage primaryStage) {
         conf = ConfigurazioneXML.caricaDaFile();
-        log = new InvioDatiLog("127.0.0.1", 8080, conf.indirizzoIPUtente);
-        db = new OperazioniDatabaseGuadagniSpese("jdbc:mysql://localhost:3306/gestionemonetaria", "root","");
+        log = new InvioDatiLog(conf.indirizzoIPServer, conf.portaServer, conf.indirizzoIPUtente);
+        db = new OperazioniDatabaseGuadagniSpese(
+                "jdbc:mysql://"+conf.indirizzoIPDbms+":"+conf.portaDbms+"/gestionemonetaria", "root","");
 
         impostaLayoutInserimentoVoce();
         impostaLayoutImportaVoci();

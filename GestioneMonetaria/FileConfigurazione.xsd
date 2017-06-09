@@ -8,6 +8,10 @@
         <xs:element type="xs:short" name="limiteSpendibili"/>
         <xs:element type="xs:string" name="vistaDefaultGrafico"/>
         <xs:element type="xs:string" name="indirizzoIPUtente"/>
+        <xs:element type="xs:string" name="indirizzoIPServer"/>
+        <xs:element type="xs:integer" name="portaServer"/>
+        <xs:element type="xs:string" name="indirizzoIPDbms"/>
+        <xs:element type="xs:integer" name="portaDbms"/>
         <xs:element name="listaCategorie">
           <xs:complexType>
             <xs:sequence>

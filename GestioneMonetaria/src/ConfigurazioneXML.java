@@ -18,6 +18,10 @@ public class ConfigurazioneXML {
     public Integer limiteSpendibili;
     public String vistaDefaultGrafico;
     public String indirizzoIPUtente;
+    public String indirizzoIPServer;
+    public Integer portaServer;
+    public String indirizzoIPDbms;
+    public Integer portaDbms;
     public ArrayList<String> listaCategorie;
     public Integer maxNumGuadagniSpeseTabella;
     

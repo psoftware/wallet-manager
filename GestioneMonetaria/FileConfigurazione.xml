@@ -4,6 +4,10 @@
 	<limiteSpendibili>1000</limiteSpendibili>
 	<vistaDefaultGrafico>Mensile</vistaDefaultGrafico>
 	<indirizzoIPUtente>127.0.0.1</indirizzoIPUtente>
+	<indirizzoIPServer>127.0.0.1</indirizzoIPServer>
+	<portaServer>8080</portaServer>
+	<indirizzoIPDbms>127.0.0.1</indirizzoIPDbms>
+	<portaDbms>3306</portaDbms>
 	<listaCategorie>
 		<string>Tasse</string>
 		<string>Stipendio</string>
