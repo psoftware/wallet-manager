@@ -20,17 +20,22 @@ public class GraficoStatisticheMonetarie extends LineChart {
     
     public GraficoStatisticheMonetarie(String titolo) {
         super(new NumberAxis(), new NumberAxis());
+        setCreateSymbols(false); // nascondi i punti
         
         seriePuntiPos = new XYChart.Series<>();
         seriePuntiNeg = new XYChart.Series<>();
         seriePuntiPos.setName("Entrate");
         seriePuntiNeg.setName("Uscite");
         
+        getXAxis().setLabel("Settimane dell'anno");
         ((NumberAxis)getXAxis()).setAutoRanging(false); //(02)
         ((NumberAxis)getXAxis()).setTickUnit(1.0); //(02)
 
         getData().add(seriePuntiPos);
         getData().add(seriePuntiNeg);
+        
+        seriePuntiPos.getNode().setStyle("-fx-stroke: #2ecc71; -fx-stroke-width: 2px;");
+        seriePuntiNeg.getNode().setStyle("-fx-stroke: #e74c3c; -fx-stroke-width: 2px;");
     }
     
     public void popolaGrafico(ArrayList<GuadagnoSpesaSettimanale> listaEntrateSett, int sceltaVisuale)
