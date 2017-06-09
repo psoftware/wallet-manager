@@ -6,3 +6,4 @@ LogServerXML/serverLog.txt
 /LogServerXML/nbproject/private/
 /LogServerXML/build/
 /LogServerXML/dist/
+*.class
