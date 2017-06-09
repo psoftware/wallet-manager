@@ -7,3 +7,4 @@ LogServerXML/serverLog.txt
 /LogServerXML/build/
 /LogServerXML/dist/
 *.class
+~*
