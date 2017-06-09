@@ -32,16 +32,6 @@ CREATE TABLE `guadagnispese` (
   PRIMARY KEY (`datariferimento`,`descrizione`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `guadagnispese`
---
-
-LOCK TABLES `guadagnispese` WRITE;
-/*!40000 ALTER TABLE `guadagnispese` DISABLE KEYS */;
-INSERT INTO `guadagnispese` VALUES ('2015-02-03','Stipendio','Lavoro extra',400);
-/*!40000 ALTER TABLE `guadagnispese` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +42,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-02 18:43:30
+-- Dump completed on 2017-06-09 22:51:45
