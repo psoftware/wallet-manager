@@ -50,7 +50,7 @@ public class OperazioniDatabaseGuadagniSpese {
         ArrayList risultato = new ArrayList<>();
         try (PreparedStatement ps = co.prepareStatement(
                         "SELECT * FROM guadagnispese "
-                      + "ORDER BY datariferimento "
+                      + "ORDER BY datariferimento DESC "
                       + "LIMIT ?")) {
               ps.setInt(1, limiteEntrate);
               ResultSet rs = ps.executeQuery();  
@@ -70,7 +70,7 @@ public class OperazioniDatabaseGuadagniSpese {
                 "SELECT * FROM guadagnispese "
                 + "WHERE datariferimento >= ? AND datariferimento <= ? "
                 + "AND categoria LIKE ? and descrizione LIKE ? "
-                + " ORDER BY datariferimento "
+                + " ORDER BY datariferimento DESC "
                 + "LIMIT ?");
         ) {
               ps.setDate(1, java.sql.Date.valueOf(datalnizio));
